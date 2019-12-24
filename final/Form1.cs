@@ -47,7 +47,8 @@ namespace final
         private void Form1_Load (object sender, EventArgs e)
         {
             _obj = this;
-            btn_char_Click( sender, e);            
+            btn_char_Click( sender, e);
+            mchar.read_pros_file();            
         }
 
         private void btn_char_Click (object sender, EventArgs e)
