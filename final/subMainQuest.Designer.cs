@@ -70,7 +70,7 @@
             this.btn_train.Name = "btn_train";
             this.btn_train.Size = new System.Drawing.Size(83, 31);
             this.btn_train.TabIndex = 2;
-            this.btn_train.Text = "修練";
+            this.btn_train.Text = "修煉";
             this.btn_train.UseVisualStyleBackColor = true;
             this.btn_train.Click += new System.EventHandler(this.btn_train_Click);
             // 

@@ -82,6 +82,7 @@
             this.btn_branch.TabIndex = 4;
             this.btn_branch.Text = "支線任務";
             this.btn_branch.UseVisualStyleBackColor = false;
+            this.btn_branch.Click += new System.EventHandler(this.btn_branch_Click);
             // 
             // panel3
             // 
