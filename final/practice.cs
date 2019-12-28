@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace final
 {
-    
+       
     public partial class practiceForm : Form
     {
 
@@ -33,7 +33,6 @@ namespace final
             INFO = Form1.mchar.status();
             return;
         }
-
 
         private void renew_info()
         {         
@@ -68,9 +67,26 @@ namespace final
                 timer_practice.Enabled = true;
                 pgb_practice.Value = int.Parse(INFO[3]);
                 pgb_practice.Maximum = int.Parse(INFO[4]);
-                pbx_gif.Image = Image.FromFile(@"./GIF/"+ GIFs[index]);
+                pbx_gif.Image = Image.FromFile(@"../../Resources/"+ GIFs[index]);
                 pbx_gif.BackColor = SystemColors.ControlText;
+                btn_end.Text = "停止修煉";
             }            
+        }
+
+        private void btn_end_Click(object sender, EventArgs e)
+        {
+            if (practicing == false)
+            {
+                this.Close();
+            }
+            else
+            {
+                practicing = false;
+                timer_practice.Enabled = false;
+                pbx_gif.Image = null;
+                pbx_gif.BackColor = SystemColors.Control;
+                btn_end.Text = "結束修煉";
+            }
         }
 
         private void timer_practice_Tick(object sender, EventArgs e)
@@ -92,20 +108,7 @@ namespace final
             show_info();
         }
 
-        private void btn_stop_Click(object sender, EventArgs e)
-        {
-            if (practicing == false)
-            {
-                this.Close();
-            }
-            else
-            {
-                practicing = false;
-                timer_practice.Enabled = false;
-                pbx_gif.Image = null;
-                pbx_gif.BackColor = SystemColors.Control;
-            }
-        }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -128,5 +131,6 @@ namespace final
         {
             Form1.mchar.set_all_properties(int.Parse(INFO[5]), int.Parse(INFO[7]), int.Parse(INFO[2]), int.Parse(INFO[8]), int.Parse(INFO[1]), int.Parse(INFO[6]), int.Parse(INFO[3]), INFO[0]);
         }
+
     }
 }

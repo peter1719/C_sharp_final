@@ -139,10 +139,13 @@
     <None Include="Resources\sample2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\IMAGE\wood_stop.jpg" />
+    <None Include="Resources\wood_start.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\IMAGE\wood_start.jpg" />
+    <None Include="Resources\wood_stop.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

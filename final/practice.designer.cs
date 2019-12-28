@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(practiceForm));
             this.pgb_practice = new System.Windows.Forms.ProgressBar();
             this.timer_practice = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lb_time = new System.Windows.Forms.Label();
             this.cbb_practice = new System.Windows.Forms.ComboBox();
             this.btn_end = new System.Windows.Forms.Button();
-            this.pbx_gif = new System.Windows.Forms.PictureBox();
-            this.btn_start = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lb_superpower = new System.Windows.Forms.Label();
@@ -48,11 +47,13 @@
             this.lb_hours = new System.Windows.Forms.Label();
             this.lb_grade = new System.Windows.Forms.Label();
             this.lb_name = new System.Windows.Forms.Label();
+            this.pbx_gif = new System.Windows.Forms.PictureBox();
+            this.btn_start = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_gif)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_gif)).BeginInit();
             this.SuspendLayout();
             // 
             // pgb_practice
@@ -130,34 +131,7 @@
             this.btn_end.TabIndex = 4;
             this.btn_end.Text = "結束修煉";
             this.btn_end.UseVisualStyleBackColor = false;
-            this.btn_end.Click += new System.EventHandler(this.btn_stop_Click);
-            // 
-            // pbx_gif
-            // 
-            this.pbx_gif.BackColor = System.Drawing.SystemColors.Control;
-            this.pbx_gif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbx_gif.Location = new System.Drawing.Point(37, 114);
-            this.pbx_gif.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pbx_gif.Name = "pbx_gif";
-            this.pbx_gif.Size = new System.Drawing.Size(375, 209);
-            this.pbx_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbx_gif.TabIndex = 0;
-            this.pbx_gif.TabStop = false;
-            // 
-            // btn_start
-            // 
-            this.btn_start.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_start.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_start.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_start.Image = global::final.Properties.Resources.wood_start;
-            this.btn_start.Location = new System.Drawing.Point(37, 408);
-            this.btn_start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_start.Name = "btn_start";
-            this.btn_start.Size = new System.Drawing.Size(149, 49);
-            this.btn_start.TabIndex = 2;
-            this.btn_start.Text = "開始修煉";
-            this.btn_start.UseVisualStyleBackColor = false;
-            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
+            this.btn_end.Click += new System.EventHandler(this.btn_end_Click);
             // 
             // groupBox2
             // 
@@ -280,6 +254,33 @@
             this.lb_name.Text = "名稱: 克西和夫";
             this.lb_name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // pbx_gif
+            // 
+            this.pbx_gif.BackColor = System.Drawing.SystemColors.Control;
+            this.pbx_gif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbx_gif.Location = new System.Drawing.Point(37, 114);
+            this.pbx_gif.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbx_gif.Name = "pbx_gif";
+            this.pbx_gif.Size = new System.Drawing.Size(375, 209);
+            this.pbx_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbx_gif.TabIndex = 0;
+            this.pbx_gif.TabStop = false;
+            // 
+            // btn_start
+            // 
+            this.btn_start.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_start.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_start.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_start.Image = ((System.Drawing.Image)(resources.GetObject("btn_start.Image")));
+            this.btn_start.Location = new System.Drawing.Point(37, 408);
+            this.btn_start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(149, 49);
+            this.btn_start.TabIndex = 2;
+            this.btn_start.Text = "開始修煉";
+            this.btn_start.UseVisualStyleBackColor = false;
+            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
+            // 
             // practiceForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -293,10 +294,10 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.practiceForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_gif)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_gif)).EndInit();
             this.ResumeLayout(false);
 
         }
