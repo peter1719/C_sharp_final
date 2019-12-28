@@ -36,7 +36,6 @@ namespace final
         {
             InitializeComponent();
 
-
             //back = new back();
             back.Size = Size;
             back.Location = Location;
@@ -116,10 +115,10 @@ namespace final
                     y.MouseUp += Form1_MouseUp;
                 }
             }
-            int pWnd = FindWindow("SysListView32", null);
+            /*int pWnd = FindWindow("SysListView32", null);
             int tWnd = Handle.ToInt32();
-            SetParent(tWnd, pWnd);
-            ;
+            SetParent(tWnd, pWnd);*/
+            
 
         }
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -372,5 +371,6 @@ namespace final
             back.Show();
             back.Location = Location;
         }
+
     }
 }
