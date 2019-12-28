@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="back.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="back.Designer.cs">
+      <DependentUpon>back.cs</DependentUpon>
+    </Compile>
+    <Compile Include="calendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="calendar.Designer.cs">
+      <DependentUpon>calendar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +102,12 @@
     <Compile Include="subMainQuest.Designer.cs">
       <DependentUpon>subMainQuest.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="back.resx">
+      <DependentUpon>back.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="calendar.resx">
+      <DependentUpon>calendar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +164,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\next.png" />
+    <None Include="Resources\previous1.png" />
+    <None Include="Resources\next1.png" />
+    <Content Include="Resources\previous.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

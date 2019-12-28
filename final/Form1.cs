@@ -15,6 +15,7 @@ namespace final
         static Form1 _obj;
         public static mainChar mchar = new mainChar();
         private mainQuest mquest = new mainQuest();
+        private Calendar calendar = new Calendar();
         public static Form1 Instance
         {
             get
@@ -71,6 +72,11 @@ namespace final
                 panelcontainer.Controls.Add(mquest);
                 panelcontainer.Controls["mainQuest"].BringToFront();
             }
+        }
+
+        private void btn_branch_Click (object sender, EventArgs e)
+        {
+            calendar.Show();
         }
     }
 }
