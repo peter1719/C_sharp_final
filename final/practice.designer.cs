@@ -35,6 +35,8 @@
             this.lb_time = new System.Windows.Forms.Label();
             this.cbb_practice = new System.Windows.Forms.ComboBox();
             this.btn_end = new System.Windows.Forms.Button();
+            this.pbx_gif = new System.Windows.Forms.PictureBox();
+            this.btn_start = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lb_superpower = new System.Windows.Forms.Label();
@@ -46,13 +48,11 @@
             this.lb_hours = new System.Windows.Forms.Label();
             this.lb_grade = new System.Windows.Forms.Label();
             this.lb_name = new System.Windows.Forms.Label();
-            this.pbx_gif = new System.Windows.Forms.PictureBox();
-            this.btn_start = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_gif)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_gif)).BeginInit();
             this.SuspendLayout();
             // 
             // pgb_practice
@@ -73,6 +73,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.groupBox1.Controls.Add(this.lb_time);
             this.groupBox1.Controls.Add(this.cbb_practice);
             this.groupBox1.Controls.Add(this.btn_end);
@@ -92,7 +93,7 @@
             // 
             // lb_time
             // 
-            this.lb_time.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.lb_time.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lb_time.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lb_time.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lb_time.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -121,7 +122,7 @@
             this.btn_end.BackColor = System.Drawing.SystemColors.Control;
             this.btn_end.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_end.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_end.Image = global::final.Properties.Resources.wood;
+            this.btn_end.Image = global::final.Properties.Resources.wood_stop;
             this.btn_end.Location = new System.Drawing.Point(264, 408);
             this.btn_end.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_end.Name = "btn_end";
@@ -131,8 +132,36 @@
             this.btn_end.UseVisualStyleBackColor = false;
             this.btn_end.Click += new System.EventHandler(this.btn_stop_Click);
             // 
+            // pbx_gif
+            // 
+            this.pbx_gif.BackColor = System.Drawing.SystemColors.Control;
+            this.pbx_gif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbx_gif.Location = new System.Drawing.Point(37, 114);
+            this.pbx_gif.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbx_gif.Name = "pbx_gif";
+            this.pbx_gif.Size = new System.Drawing.Size(375, 209);
+            this.pbx_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbx_gif.TabIndex = 0;
+            this.pbx_gif.TabStop = false;
+            // 
+            // btn_start
+            // 
+            this.btn_start.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_start.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_start.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_start.Image = global::final.Properties.Resources.wood_start;
+            this.btn_start.Location = new System.Drawing.Point(37, 408);
+            this.btn_start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(149, 49);
+            this.btn_start.TabIndex = 2;
+            this.btn_start.Text = "開始修煉";
+            this.btn_start.UseVisualStyleBackColor = false;
+            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
+            // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -160,7 +189,7 @@
             // 
             // lb_superpower
             // 
-            this.lb_superpower.BackColor = System.Drawing.Color.Violet;
+            this.lb_superpower.BackColor = System.Drawing.Color.DarkOrchid;
             this.lb_superpower.Location = new System.Drawing.Point(27, 106);
             this.lb_superpower.Name = "lb_superpower";
             this.lb_superpower.Size = new System.Drawing.Size(193, 30);
@@ -190,7 +219,7 @@
             // 
             // lb_bonus
             // 
-            this.lb_bonus.BackColor = System.Drawing.Color.DarkGray;
+            this.lb_bonus.BackColor = System.Drawing.Color.DeepPink;
             this.lb_bonus.Location = new System.Drawing.Point(27, 150);
             this.lb_bonus.Name = "lb_bonus";
             this.lb_bonus.Size = new System.Drawing.Size(193, 30);
@@ -251,50 +280,23 @@
             this.lb_name.Text = "名稱: 克西和夫";
             this.lb_name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // pbx_gif
-            // 
-            this.pbx_gif.BackColor = System.Drawing.SystemColors.Control;
-            this.pbx_gif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbx_gif.Location = new System.Drawing.Point(37, 114);
-            this.pbx_gif.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pbx_gif.Name = "pbx_gif";
-            this.pbx_gif.Size = new System.Drawing.Size(375, 209);
-            this.pbx_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbx_gif.TabIndex = 0;
-            this.pbx_gif.TabStop = false;
-            // 
-            // btn_start
-            // 
-            this.btn_start.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_start.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_start.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_start.Image = global::final.Properties.Resources.wood2;
-            this.btn_start.Location = new System.Drawing.Point(37, 408);
-            this.btn_start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_start.Name = "btn_start";
-            this.btn_start.Size = new System.Drawing.Size(149, 49);
-            this.btn_start.TabIndex = 2;
-            this.btn_start.Text = "開始修煉";
-            this.btn_start.UseVisualStyleBackColor = false;
-            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
-            // 
             // practiceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(799, 502);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "practiceForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.practiceForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_gif)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_gif)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -103,9 +103,9 @@ namespace final.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap wood {
+        internal static System.Drawing.Bitmap wood_start {
             get {
-                object obj = ResourceManager.GetObject("wood", resourceCulture);
+                object obj = ResourceManager.GetObject("wood_start", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace final.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap wood2 {
+        internal static System.Drawing.Bitmap wood_stop {
             get {
-                object obj = ResourceManager.GetObject("wood2", resourceCulture);
+                object obj = ResourceManager.GetObject("wood_stop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

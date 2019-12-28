@@ -25,6 +25,7 @@ namespace final
         private int energy = 0;
         private int exe = 0;
         private int max_exe = 0;
+
         public void set_all_properties (int _wisdom,int _ESP,int _time,int _reward,int _level,int _energy,
             int _exe,string _name)
         {
@@ -62,6 +63,17 @@ namespace final
         {
             string temp = wisdom.ToString() + "," + ESP.ToString() + "," + time.ToString() + "," + reward.ToString()
              + "," + level.ToString() + "," + energy.ToString() + "," + exe.ToString() + "," + name;
+            return temp;
+        }
+
+        public int max_exp(int level)
+        {
+            return (int)(Math.Pow(level, EXEbase) - Math.Pow(level - 1, EXEbase)) * 10;
+        }
+        public string[] status()
+        {
+            string[] temp = { name, level.ToString(), time.ToString(), exe.ToString(), max_exe.ToString(), wisdom.ToString(),
+                                            energy.ToString(), energy.ToString(), ESP.ToString(), reward.ToString() };
             return temp;
         }
         public mainChar ()

@@ -12,6 +12,7 @@ namespace final
 {
     public partial class subMainQuest : UserControl
     {
+
         private string[ ] master_level = { "不熟", "稍微知道", "熟悉", "精通" };
         private int index = 0;
         public int _level = 2;
@@ -103,7 +104,7 @@ namespace final
         #endregion
         private void subMainQuest_Load (object sender, EventArgs e)
         {
-
+            
         }
         private void select_sub ()
         {
@@ -124,7 +125,8 @@ namespace final
 
         private void btn_train_Click (object sender, EventArgs e)
         {
-
+            practiceForm pForm = new practiceForm();
+            pForm.Show();
         }
 
         private void pictureBox1_Click (object sender, EventArgs e)

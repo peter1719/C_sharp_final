@@ -55,6 +55,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.edit_set);
             this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
             // 
             // label1
@@ -63,57 +64,62 @@
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 24);
+            this.label1.Size = new System.Drawing.Size(67, 30);
             this.label1.TabIndex = 1;
             this.label1.Text = "名稱:";
+            this.label1.Click += new System.EventHandler(this.edit_set);
             // 
             // label_level
             // 
             this.label_level.AutoSize = true;
             this.label_level.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_level.Location = new System.Drawing.Point(12, 56);
+            this.label_level.Location = new System.Drawing.Point(12, 60);
             this.label_level.Name = "label_level";
-            this.label_level.Size = new System.Drawing.Size(68, 24);
+            this.label_level.Size = new System.Drawing.Size(87, 30);
             this.label_level.TabIndex = 3;
             this.label_level.Text = "等級: 5";
+            this.label_level.Click += new System.EventHandler(this.edit_set);
             // 
             // label_exe
             // 
             this.label_exe.AutoSize = true;
             this.label_exe.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_exe.Location = new System.Drawing.Point(12, 104);
+            this.label_exe.Location = new System.Drawing.Point(12, 160);
             this.label_exe.Name = "label_exe";
-            this.label_exe.Size = new System.Drawing.Size(128, 24);
+            this.label_exe.Size = new System.Drawing.Size(163, 30);
             this.label_exe.TabIndex = 4;
             this.label_exe.Text = "經驗值: 87/88";
+            this.label_exe.Click += new System.EventHandler(this.edit_set);
             // 
             // label_reward
             // 
             this.label_reward.AutoSize = true;
             this.label_reward.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_reward.Location = new System.Drawing.Point(16, 146);
+            this.label_reward.Location = new System.Drawing.Point(16, 160);
             this.label_reward.Name = "label_reward";
-            this.label_reward.Size = new System.Drawing.Size(114, 24);
+            this.label_reward.Size = new System.Drawing.Size(163, 30);
             this.label_reward.TabIndex = 6;
-            this.label_reward.Text = "獎勵: 100 點";
+            this.label_reward.Text = "獎勵點數: 100";
+            this.label_reward.Click += new System.EventHandler(this.edit_set);
             // 
             // label_time
             // 
             this.label_time.AutoSize = true;
             this.label_time.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_time.Location = new System.Drawing.Point(12, 146);
+            this.label_time.Location = new System.Drawing.Point(12, 110);
             this.label_time.Name = "label_time";
-            this.label_time.Size = new System.Drawing.Size(122, 24);
+            this.label_time.Size = new System.Drawing.Size(149, 30);
             this.label_time.TabIndex = 7;
-            this.label_time.Text = "時數: 87 分鐘";
+            this.label_time.Text = "時數: 87分鐘";
+            this.label_time.Click += new System.EventHandler(this.edit_set);
             // 
             // label_name
             // 
             this.label_name.AutoSize = true;
             this.label_name.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_name.Location = new System.Drawing.Point(61, 10);
+            this.label_name.Location = new System.Drawing.Point(66, 10);
             this.label_name.Name = "label_name";
-            this.label_name.Size = new System.Drawing.Size(86, 24);
+            this.label_name.Size = new System.Drawing.Size(109, 30);
             this.label_name.TabIndex = 8;
             this.label_name.Text = "克西和夫";
             this.label_name.DoubleClick += new System.EventHandler(this.label_name_DoubleClick);
@@ -122,21 +128,23 @@
             // 
             this.label_ESP.AutoSize = true;
             this.label_ESP.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ESP.Location = new System.Drawing.Point(16, 104);
+            this.label_ESP.Location = new System.Drawing.Point(16, 110);
             this.label_ESP.Name = "label_ESP";
-            this.label_ESP.Size = new System.Drawing.Size(109, 24);
+            this.label_ESP.Size = new System.Drawing.Size(139, 30);
             this.label_ESP.TabIndex = 9;
             this.label_ESP.Text = "超能力: 100";
+            this.label_ESP.Click += new System.EventHandler(this.edit_set);
             // 
             // label_energy
             // 
             this.label_energy.AutoSize = true;
             this.label_energy.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_energy.Location = new System.Drawing.Point(16, 56);
+            this.label_energy.Location = new System.Drawing.Point(16, 60);
             this.label_energy.Name = "label_energy";
-            this.label_energy.Size = new System.Drawing.Size(95, 24);
+            this.label_energy.Size = new System.Drawing.Size(121, 30);
             this.label_energy.TabIndex = 10;
             this.label_energy.Text = "體力: 100 ";
+            this.label_energy.Click += new System.EventHandler(this.edit_set);
             // 
             // label_wisdom
             // 
@@ -144,9 +152,10 @@
             this.label_wisdom.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_wisdom.Location = new System.Drawing.Point(16, 10);
             this.label_wisdom.Name = "label_wisdom";
-            this.label_wisdom.Size = new System.Drawing.Size(90, 24);
+            this.label_wisdom.Size = new System.Drawing.Size(115, 30);
             this.label_wisdom.TabIndex = 11;
             this.label_wisdom.Text = "智力: 100";
+            this.label_wisdom.Click += new System.EventHandler(this.edit_set);
             // 
             // panel_ability
             // 
@@ -182,6 +191,7 @@
             this.Name = "mainChar";
             this.Size = new System.Drawing.Size(879, 451);
             this.Load += new System.EventHandler(this.mainChar_Load);
+            this.Click += new System.EventHandler(this.edit_set);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_ability.ResumeLayout(false);
             this.panel_ability.PerformLayout();

@@ -13,6 +13,7 @@ namespace final
     
     public partial class practiceForm : Form
     {
+
         string[] INFO = { "克西和一", "3", "20", "66", "80", "65", "67", "64", "99" };
 
         string[] GIFs = { "1.gif", "2.gif", "3.gif", "4.gif", "5.gif" };
@@ -29,6 +30,7 @@ namespace final
 
         private void get_info()
         {
+            INFO = Form1.mchar.status();
             return;
         }
 
@@ -37,6 +39,7 @@ namespace final
         {         
             if (second == 0 && second_remainder == 0) INFO[2] = (int.Parse(INFO[2]) + minute).ToString();
             INFO[3] = pgb_practice.Value.ToString();
+            INFO[4] = Form1.mchar.max_exp(int.Parse(INFO[1])).ToString();
             //if (pgb_practice.Value == pgb_practice.Value)            
         }
 
@@ -91,10 +94,17 @@ namespace final
 
         private void btn_stop_Click(object sender, EventArgs e)
         {
-            practicing = false;
-            timer_practice.Enabled = false;
-            pbx_gif.Image = null;
-            pbx_gif.BackColor = SystemColors.Control;
+            if (practicing == false)
+            {
+                this.Close();
+            }
+            else
+            {
+                practicing = false;
+                timer_practice.Enabled = false;
+                pbx_gif.Image = null;
+                pbx_gif.BackColor = SystemColors.Control;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -113,6 +123,10 @@ namespace final
             cbb_practice.Items.Clear();
             cbb_practice.Items.AddRange(ITEMs);
         }
-        
+
+        private void practiceForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form1.mchar.set_all_properties(int.Parse(INFO[5]), int.Parse(INFO[7]), int.Parse(INFO[2]), int.Parse(INFO[8]), int.Parse(INFO[1]), int.Parse(INFO[6]), int.Parse(INFO[3]), INFO[0]);
+        }
     }
 }

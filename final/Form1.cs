@@ -13,7 +13,7 @@ namespace final
     public partial class Form1 : Form
     {
         static Form1 _obj;
-        private mainChar mchar = new mainChar();
+        public static mainChar mchar = new mainChar();
         private mainQuest mquest = new mainQuest();
         public static Form1 Instance
         {

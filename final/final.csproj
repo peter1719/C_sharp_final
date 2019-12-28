@@ -79,6 +79,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="subMainQuest.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,14 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="subMainQuest.resx">
       <DependentUpon>subMainQuest.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,10 +139,10 @@
     <None Include="Resources\sample2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\IMAGE\wood.jpg" />
+    <None Include="bin\Debug\IMAGE\wood_stop.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\IMAGE\wood2.jpg" />
+    <None Include="bin\Debug\IMAGE\wood_start.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
