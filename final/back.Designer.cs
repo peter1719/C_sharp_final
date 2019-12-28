@@ -39,6 +39,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "back";
             this.Opacity = 0.5D;
+            this.ShowInTaskbar = false;
             this.Text = "back";
             this.Load += new System.EventHandler(this.back_Load);
             this.ResumeLayout(false);

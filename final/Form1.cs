@@ -77,6 +77,7 @@ namespace final
         private void btn_branch_Click (object sender, EventArgs e)
         {
             calendar.Show();
+            Focus();
         }
     }
 }

@@ -9,12 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace final
 {
     public partial class Calendar : Form
     {
-        private Form back;
+        [DllImport("User32.dll")]
+        static extern Int32 FindWindow(String lpClassName, String lpWindowName);
+
+        [DllImport("user32.dll")]
+        static extern int SetParent(int hWndChild, int hWndNewParent);
+        private back back = new back();
         private int tick = 0;
         private int m = 0;
         private bool resizing;
@@ -29,11 +35,11 @@ namespace final
         public Calendar()
         {
             InitializeComponent();
-            back = new back();
 
+
+            //back = new back();
             back.Size = Size;
             back.Location = Location;
-            back.Show();
             tableLayoutPanel1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(tableLayoutPanel1, true, null);
             tableLayoutPanel3.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(tableLayoutPanel1, true, null);
             //tableLayoutPanel1.BackColor = Color.FromArgb(10, 200, 0, 200);
@@ -110,15 +116,11 @@ namespace final
                     y.MouseUp += Form1_MouseUp;
                 }
             }
-            /*tableLayoutPanel1.MouseMove += Form1_MouseMove;
-            tableLayoutPanel1.MouseDown += Form1_MouseDown;
-            tableLayoutPanel1.MouseUp += Form1_MouseUp;
-            tableLayoutPanel3.MouseMove += Form1_MouseMove;
-            tableLayoutPanel3.MouseDown += Form1_MouseDown;
-            tableLayoutPanel3.MouseUp += Form1_MouseUp;
-            panel1.MouseMove += Form1_MouseMove;
-            panel1.MouseDown += Form1_MouseDown;
-            panel1.MouseUp += Form1_MouseUp;*/
+            int pWnd = FindWindow("SysListView32", null);
+            int tWnd = Handle.ToInt32();
+            SetParent(tWnd, pWnd);
+            ;
+
         }
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -289,8 +291,6 @@ namespace final
                 Label y = new Label();
                 y.Text = "24";
                 x.Controls.Add(y);
-
-
             }*/
         }
 
@@ -367,5 +367,10 @@ namespace final
             tick++;
         }
 
+        private void Calendar_Load(object sender, EventArgs e)
+        {
+            back.Show();
+            back.Location = Location;
+        }
     }
 }
