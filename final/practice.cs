@@ -35,11 +35,18 @@ namespace final
         }
 
         private void renew_info()
-        {         
+        {
+            // 等級
+            if (pgb_practice.Value == pgb_practice.Maximum)
+            {
+                pgb_practice.Value = 0;
+                INFO[1] = (int.Parse(INFO[1]) + 1).ToString();
+            }
+            // 時數
             if (second == 0 && second_remainder == 0) INFO[2] = (int.Parse(INFO[2]) + minute).ToString();
+            // 經驗值
             INFO[3] = pgb_practice.Value.ToString();
-            INFO[4] = Form1.mchar.max_exp(int.Parse(INFO[1])).ToString();
-            //if (pgb_practice.Value == pgb_practice.Value)            
+            INFO[4] = Form1.mchar.max_exp(int.Parse(INFO[1])).ToString();     
         }
 
         private void show_info()
@@ -93,7 +100,7 @@ namespace final
         {
             // Renew ProgressBar
             timer_practice.Interval = 250;
-            pgb_practice.Value = (pgb_practice.Value + 1) % pgb_practice.Maximum;
+            pgb_practice.Value += 1;
 
             // Renew Timer
             timer_count += 1;

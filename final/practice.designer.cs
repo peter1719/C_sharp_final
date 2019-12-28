@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(practiceForm));
             this.pgb_practice = new System.Windows.Forms.ProgressBar();
             this.timer_practice = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -271,7 +270,7 @@
             this.btn_start.BackColor = System.Drawing.SystemColors.Control;
             this.btn_start.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_start.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_start.Image = ((System.Drawing.Image)(resources.GetObject("btn_start.Image")));
+            this.btn_start.Image = global::final.Properties.Resources.wood_start;
             this.btn_start.Location = new System.Drawing.Point(37, 408);
             this.btn_start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_start.Name = "btn_start";
