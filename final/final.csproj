@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>final</RootNamespace>
     <AssemblyName>final</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -71,6 +71,12 @@
     <Compile Include="mQuestInfo.Designer.cs">
       <DependentUpon>mQuestInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="practice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="practice.designer.cs">
+      <DependentUpon>practice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="subMainQuest.cs">
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mQuestInfo.resx">
       <DependentUpon>mQuestInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="practice.resx">
+      <DependentUpon>practice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,6 +137,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sample2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\IMAGE\wood.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\IMAGE\wood2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
