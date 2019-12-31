@@ -77,8 +77,18 @@ namespace final
                 pgb_practice.Maximum = int.Parse(INFO[4]);
                 pbx_gif.Image = Image.FromFile(@"../../Resources/"+ GIFs[index]);
                 pbx_gif.BackColor = SystemColors.ControlText;
+                lb_hint.Visible = false;
                 btn_end.Text = "停止修煉";
-            }            
+            }
+            else if (practicing == true)
+            {
+                MessageBox.Show("修煉已經開始", "貼心小提醒", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (index == -1)
+            {
+                MessageBox.Show("尚未點選修煉項目", "貼心小提醒", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private void btn_end_Click(object sender, EventArgs e)
@@ -93,6 +103,7 @@ namespace final
                 timer_practice.Enabled = false;
                 pbx_gif.Image = null;
                 pbx_gif.BackColor = SystemColors.Control;
+                lb_hint.Visible = true;
                 btn_end.Text = "結束修煉";
             }
         }
@@ -119,6 +130,7 @@ namespace final
         private void Form1_Load(object sender, EventArgs e)
         {
             groupBox1.Text = "修煉狀態" + LEVELS[level];
+            lb_hint.Text = "請點選修煉項目";
             get_info();
             pbx_gif.Image = null;       
             pgb_practice.Value = int.Parse(INFO[3]);
