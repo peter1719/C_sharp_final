@@ -35,9 +35,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_main = new System.Windows.Forms.Button();
             this.btn_char = new System.Windows.Forms.Button();
-            this.theQuestDataSet1 = new final.theQuestDataSet();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.theQuestDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelcontainer
@@ -118,11 +116,6 @@
             this.btn_char.UseVisualStyleBackColor = false;
             this.btn_char.Click += new System.EventHandler(this.btn_char_Click);
             // 
-            // theQuestDataSet1
-            // 
-            this.theQuestDataSet1.DataSetName = "theQuestDataSet";
-            this.theQuestDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -135,7 +128,6 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.theQuestDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -149,7 +141,6 @@
         private System.Windows.Forms.Button btn_main;
         private System.Windows.Forms.Button btn_char;
         private System.Windows.Forms.Panel panelcontainer;
-        private theQuestDataSet theQuestDataSet1;
     }
 }
 

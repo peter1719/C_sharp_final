@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 namespace final
 {
@@ -28,6 +30,10 @@ namespace final
         public void setindex (int _index)
         {
             index = _index;
+        }
+        public int getindex ()
+        {
+            return index;
         }
         public mQuestInfo ()
         {
@@ -151,9 +157,19 @@ namespace final
 
         private void rename_Enter (object sender, KeyEventArgs e)
         {
+            
             TextBox text = sender as TextBox;
             if (e.KeyCode == Keys.Enter && text.Text != "")
             {
+                SqlConnection quest_db_connect;
+                quest_db_connect = new SqlConnection();
+                quest_db_connect.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
+                     "Integrated Security=True";
+                quest_db_connect.Open();
+                SqlCommand sql = new SqlCommand($"UPDATE  main_quest SET name=N'{text.Text}' ", quest_db_connect);
+                sql.ExecuteNonQuery();
+                quest_db_connect.Close();
                 label_quest.Text = text.Text;
                 text.Dispose();
                 label_quest.BringToFront();
