@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Data.SqlClient;
 
 namespace final
 {
@@ -31,6 +32,18 @@ namespace final
         private bool mouseDown;
         private Point lastLocation;
         private Point lastCorner;
+        void can_move(Control x)
+        {
+            foreach(Control y in x.Controls)
+            {
+                y.MouseMove += Form1_MouseMove;
+                y.MouseDown += Form1_MouseDown;
+                y.MouseUp += Form1_MouseUp;
+                if (y.HasChildren)
+                    can_move(y);
+            }
+        }
+
 
         public Calendar()
         {
@@ -99,7 +112,7 @@ namespace final
                     tableLayoutPanel1.Controls.Add(x, j, i);
                 }
             }
-            foreach (Control x in Controls)
+            /*foreach (Control x in Controls)
             {
                 x.Click += Form1_Click;
                 x.MouseMove += Form1_MouseMove;
@@ -114,12 +127,11 @@ namespace final
                     y.MouseDown += Form1_MouseDown;
                     y.MouseUp += Form1_MouseUp;
                 }
-            }
+            }*/
             /*int pWnd = FindWindow("SysListView32", null);
             int tWnd = Handle.ToInt32();
             SetParent(tWnd, pWnd);*/
-            
-
+            can_move(this);
         }
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -145,31 +157,31 @@ namespace final
             }
             if (move && !resizing)
             {
-                if (e.X < 10 && e.Y < 10)
+                if (PointToClient(Cursor.Position).X < 10 && PointToClient(Cursor.Position).Y < 10)
                 {
                     onborder = true;
                     direction = 5;
                     Cursor = Cursors.SizeNWSE;
                 }
-                else if (e.X < 10)
+                else if (PointToClient(Cursor.Position).X < 10)
                 {
                     onborder = true;
                     direction = 1;
                     Cursor = Cursors.SizeWE;
                 }
-                else if (e.X > ClientSize.Width - 10)
+                else if (PointToClient(Cursor.Position).X > ClientSize.Width - 10)
                 {
                     onborder = true;
                     direction = 2;
                     Cursor = Cursors.SizeWE;
                 }
-                else if (e.Y > ClientSize.Height - 10)
+                else if (PointToClient(Cursor.Position).Y > ClientSize.Height - 10)
                 {
                     onborder = true;
                     direction = 4;
                     Cursor = Cursors.SizeNS;
                 }
-                else if (e.Y < 10)
+                else if (PointToClient(Cursor.Position).Y < 10)
                 {
                     onborder = true;
                     direction = 3;
@@ -194,7 +206,7 @@ namespace final
                 }
                 else if (direction == 2)
                 {
-                    Width = e.X;
+                    Width = PointToClient(Cursor.Position).X;
                 }
                 else if (direction == 3)
                 {
@@ -204,7 +216,7 @@ namespace final
                 }
                 else if (direction == 4)
                 {
-                    Height = e.Y+87;
+                    Height = PointToClient(Cursor.Position).Y;
                 }
                 else if (direction == 5)
                 {
@@ -311,6 +323,7 @@ namespace final
             {
                 ((TextBox)x.Tag).Hide();
                 ((Control[])((Control)x.Tag).Tag)[1].Text = ((TextBox)x.Tag).Text;
+
             }
         }
 
@@ -371,6 +384,5 @@ namespace final
             back.Show();
             back.Location = Location;
         }
-
     }
 }
