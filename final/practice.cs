@@ -16,8 +16,8 @@ namespace final
 
         string[] INFO = { "克西和一", "3", "20", "66", "80", "65", "67", "64", "99" };
 
-        string[] GIFs = { "1.gif", "2.gif", "3.gif", "4.gif", "5.gif" };
-        string[] ITEMs = { "提升訓練", "胸部訓練", "雙人對練", "兵器訓練", "手腳訓練" }; 
+        string[] GIFs = { "study.gif", "draw.gif", "piano.gif", "dance.gif", "fly.gif" };
+        string[] ITEMs = { "韋編三絕", "妙手丹青", "繞樑三日", "翩翩起舞", "一飛衝天" }; 
 
         bool practicing = false;
 
