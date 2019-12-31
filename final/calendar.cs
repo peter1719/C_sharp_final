@@ -23,7 +23,8 @@ namespace final
         static extern int SetParent(int hWndChild, int hWndNewParent);
         private back back = new back();
         private int tick = 0;
-        private int m = 0;
+        private int month = 0;
+        private int year = 0;
         private bool resizing;
         private int direction = -1;
         private bool onborder;
@@ -32,6 +33,9 @@ namespace final
         private bool mouseDown;
         private Point lastLocation;
         private Point lastCorner;
+        private SqlConnection cn;
+        private DataTable dt = new DataTable();
+
         void can_move(Control x)
         {
             foreach(Control y in x.Controls)
@@ -63,9 +67,19 @@ namespace final
             panel1.Height = tableLayoutPanel3.Top - 2;
 
             timer1.Start();
-            ControlBox = false;
+            ControlBox = false;//隱藏標題列
             Text = string.Empty;
             label8.Text = DateTime.Now.Month.ToString();
+            label11.Text = DateTime.Now.Year.ToString();
+
+            cn = new SqlConnection();
+            cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
+                 "Integrated Security=True";
+            cn.Open();
+            
+            SqlDataAdapter db = new SqlDataAdapter("SELECT *  FROM  calendar_data", cn);
+            db.Fill(dt);
 
             for (int i = 0; i < 4; i++)
             {
@@ -89,6 +103,11 @@ namespace final
                     Label y = new Label();
                     var d = (int)DateTime.Today.DayOfWeek;
                     y.Text = DateTime.Today.AddDays(7*i+j-d).Day.ToString();
+                    if (7 * i + j - d == 0)
+                        y.ForeColor = Color.Red;
+                    else
+                        y.ForeColor = Color.Black;
+
                     x.Controls.Add(y);
                     y.Click += Form1_Click;
                     y.Click += edit_l;
@@ -104,7 +123,10 @@ namespace final
                     a.Click += edit_l;
                     a.Height = x.Height - y.Height + 100;
                     //a.Text = "test456";
-                    Control[] k = { y, a };
+                    
+                    a.Text = (dt.Select($@"date='{DateTime.Today.AddDays(7 * i + j - d).ToShortDateString()}'").ElementAtOrDefault(0) ?? dt.Select(@"date='1900/1/1'")[0])["data"].ToString();
+                    a.Tag = DateTime.Today.AddDays(7 * i + j - d);
+                    Control[] k = { y, a};
                     z.Tag = k;
                     x.Controls.Add(a);
                     a.BringToFront();
@@ -132,6 +154,9 @@ namespace final
             int tWnd = Handle.ToInt32();
             SetParent(tWnd, pWnd);*/
             can_move(this);
+            panel1.Click += Form1_Click;
+            cn.Close();
+
         }
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -309,21 +334,42 @@ namespace final
         {
             ((Control)((Control)sender).Tag).BringToFront();
             ((Control)((Control)sender).Tag).Show();
+            ((Control)((Control)sender).Tag).Text = ((Control[])((Control)((Control)sender).Tag).Tag)[1].Text;
             ((Control)((Control)sender).Tag).Focus();
         }
         private void edit_l(object sender, EventArgs e)
         {
             ((Control)((Control)sender).Parent.Tag).BringToFront();
             ((Control)((Control)sender).Parent.Tag).Show();
+            string ee = ((Control[])((Control)((Control)sender).Parent.Tag).Tag)[1].Text;
+            ((Control)((Control)sender).Parent.Tag).Text = ((Control[])((Control)((Control)sender).Parent.Tag).Tag)[1].Text;
             ((Control)((Control)sender).Parent.Tag).Focus();
         }
         private void Form1_Click(object sender, EventArgs e)
         {
             foreach (Panel x in tableLayoutPanel1.Controls.OfType<Panel>())
             {
-                ((TextBox)x.Tag).Hide();
-                ((Control[])((Control)x.Tag).Tag)[1].Text = ((TextBox)x.Tag).Text;
-
+                if (((TextBox)x.Tag).Visible) {
+                    ((TextBox)x.Tag).Hide();
+                    ((Control[])((Control)x.Tag).Tag)[1].Text = ((TextBox)x.Tag).Text;
+                    string yy = $"SELECT * FROM calendar_data WHERE date='{((DateTime)((Control[])((Control)x.Tag).Tag)[1].Tag).ToShortDateString()}'";
+                    SqlDataAdapter is_exist = new SqlDataAdapter($"SELECT * FROM calendar_data WHERE date='{((DateTime)((Control[])((Control)x.Tag).Tag)[1].Tag).ToShortDateString()}'", cn);
+                    DataTable dtt = new DataTable();
+                    is_exist.Fill(dtt);
+                    if (dtt.Rows.Count == 0)
+                    {
+                        if (((TextBox)x.Tag).Text != "")
+                        {
+                            SqlDataAdapter sql = new SqlDataAdapter($"INSERT INTO calendar_data VALUES('{((DateTime)((Control[])((Control)x.Tag).Tag)[1].Tag).ToShortDateString()}',N'{((TextBox)x.Tag).Text}')", cn);
+                            sql.Fill(dt);
+                        }
+                    }
+                    else
+                    {
+                        SqlDataAdapter sql = new SqlDataAdapter($"UPDATE calendar_data SET data = N'{((TextBox)x.Tag).Text}' WHERE date='{((DateTime)((Control[])((Control)x.Tag).Tag)[1].Tag).ToShortDateString()}'", cn);
+                        sql.Fill(dt);
+                    }
+                }
             }
         }
 
@@ -344,32 +390,46 @@ namespace final
 
         private void button4_Click(object sender, EventArgs e)
         {
-            m--;
-            label8.Text = DateTime.Now.AddMonths(m).Month.ToString();
+            month--;
+            label8.Text = DateTime.Now.AddMonths(month).Month.ToString();
+            year--;
+            label11.Text = DateTime.Now.AddYears(year).Year.ToString();
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
                     Panel y = (Panel)tableLayoutPanel1.GetControlFromPosition(j, i);
                     var d = (int)DateTime.Today.DayOfWeek;
-                    ((Control[])((Control)y.Tag).Tag)[0].Text = DateTime.Today.AddDays(7 * i + j - d+28*m).Day.ToString();
-
+                    ((Control[])((Control)y.Tag).Tag)[0].Text = DateTime.Today.AddDays(7 * i + j - d+28*month).Day.ToString();
+                    if (7 * i + j - d + 28 * month == 0)
+                        ((Control[])((Control)y.Tag).Tag)[0].ForeColor = Color.Red;
+                    else
+                        ((Control[])((Control)y.Tag).Tag)[0].ForeColor = Color.Black;
+                    ((Control[])((Control)y.Tag).Tag)[1].Text = (dt.Select($@"date='{DateTime.Today.AddDays(7 * i + j - d + 28 * month).ToShortDateString()}'").ElementAtOrDefault(0) ?? dt.Select(@"date='1900/1/1'")[0])["data"].ToString();
+                    ((Control[])((Control)y.Tag).Tag)[1].Tag = DateTime.Today.AddDays(7 * i + j - d + 28 * month);
                 }
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            m++;
-            label8.Text = DateTime.Now.AddMonths(m).Month.ToString();
+            month++;
+            label8.Text = DateTime.Now.AddMonths(month).Month.ToString();
+            year++;
+            label11.Text = DateTime.Now.AddYears(year).Year.ToString();
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
                     Panel y = (Panel)tableLayoutPanel1.GetControlFromPosition(j, i);
                     var d = (int)DateTime.Today.DayOfWeek;
-                    ((Control[])((Control)y.Tag).Tag)[0].Text = DateTime.Today.AddDays(7 * i + j - d + 28 * m).Day.ToString();
-
+                    ((Control[])((Control)y.Tag).Tag)[0].Text = DateTime.Today.AddDays(7 * i + j - d + 28 * month).Day.ToString();
+                    if (7 * i + j - d + 28 * month == 0)
+                        ((Control[])((Control)y.Tag).Tag)[0].ForeColor = Color.Red;
+                    else
+                        ((Control[])((Control)y.Tag).Tag)[0].ForeColor = Color.Black;
+                    ((Control[])((Control)y.Tag).Tag)[1].Text = (dt.Select($@"date='{DateTime.Today.AddDays(7 * i + j - d + 28 * month).ToShortDateString()}'").ElementAtOrDefault(0) ?? dt.Select(@"date='1900/1/1'")[0])["data"].ToString();
+                    ((Control[])((Control)y.Tag).Tag)[1].Tag = DateTime.Today.AddDays(7 * i + j - d + 28 * month);
                 }
             }
         }
