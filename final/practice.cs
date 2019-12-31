@@ -13,16 +13,17 @@ namespace final
        
     public partial class practiceForm : Form
     {
-        public int level = 0;
+        public int level = 0; // 簡單:0, 普通:1, 大師:2
+        private string[] LEVELS = { "【簡單】", "【普通】", "【大師】" };
 
-        string[] INFO = { "克西和一", "3", "20", "66", "80", "65", "67", "64", "99" };
+        private string[] INFO = { "克西和一", "3", "20", "66", "80", "65", "67", "64", "99" };
 
-        string[] GIFs = { "study.gif", "draw.gif", "piano.gif", "dance.gif", "fly.gif" };
-        string[] ITEMs = { "韋編三絕", "妙手丹青", "繞樑三日", "翩翩起舞", "一飛衝天" }; 
+        private string[] GIFs = { "study.gif", "draw.gif", "piano.gif", "dance.gif", "fly.gif" };
+        private string[] ITEMs = { "韋編三絕", "妙手丹青", "繞樑三日", "翩翩起舞", "一飛衝天" };
 
-        bool practicing = false;
+        private bool practicing = false;
 
-        int timer_count = 0;  int minute = 0; int second = 0; int second_count = 0; int second_remainder = 0;
+        private int timer_count = 0;  int minute = 0; int second = 0; int second_count = 0; int second_remainder = 0;
 
         public practiceForm()
         {
@@ -61,7 +62,6 @@ namespace final
             lb_superpower.Text = "超能力: " + INFO[7];
             lb_bonus.Text = "獎勵點數: " + INFO[8];
         }
-
 
         private void btn_start_Click(object sender, EventArgs e)
         {
@@ -116,10 +116,9 @@ namespace final
             show_info();
         }
 
-        
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            groupBox1.Text = "修煉狀態" + LEVELS[level];
             get_info();
             pbx_gif.Image = null;       
             pgb_practice.Value = int.Parse(INFO[3]);
