@@ -116,7 +116,7 @@ namespace final
         }
         public void write_pros_file ()
         {
-            FileInfo finfo = new FileInfo(@"./status.txt");
+            FileInfo finfo = new FileInfo(@"../../Resources/status.txt");
             StreamWriter sw = finfo.CreateText();
             sw.Write(char_pros());
             sw.Flush();
@@ -124,7 +124,7 @@ namespace final
         }
         public void read_pros_file ()
         {
-            string path = @"./status.txt";
+            string path = @"../../Resources/status.txt";
             FileInfo finfo = new FileInfo(path);
             if (finfo.Exists)
             {

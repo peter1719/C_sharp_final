@@ -20,9 +20,9 @@ namespace final
         public List<subMainQuest> hard_quest;
         public List<List<subMainQuest>> list_quests;
         public int level_select = 0;
-        public int focus_index = -1;
+        public int focus_index = -1;//sub main select
 
-        private int index = 0;
+        private int index = 0;//db index
         public void setmq ( mainQuest mq)
         {
             _mq = mq;
@@ -122,6 +122,31 @@ namespace final
             _mq.load_sub_quest(smq, level);
         }
 
+        public void db_sub_quest ()
+        {
+            SqlConnection quest_db_connect;
+            quest_db_connect = new SqlConnection();
+            quest_db_connect.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
+                 "Integrated Security=True";
+            quest_db_connect.Open();
+            DataSet ds = new DataSet();
+            SqlDataAdapter db_quest = new SqlDataAdapter
+                                        ($"SELECT *  FROM sub_quest WHERE id = {index}", quest_db_connect);
+            db_quest.Fill(ds);
+            foreach (DataRow datarow in ds.Tables[0].Rows)
+            {
+                // id name level time index
+                subMainQuest temp = new subMainQuest((int)datarow[2], this);
+                temp.quest_name =datarow[1].ToString();//name
+                temp.engage_time = (int)datarow[3];//time
+                temp.setindex((int)datarow[4]);//set index in the list
+                list_quests[(int)datarow[2]].Add(temp);         
+            }
+            quest_db_connect.Close();
+
+        }
+
         public void recolor_sub_quest ()
         {
             for (int i = 0; i < list_quests[level_select].Count; i++)
@@ -134,11 +159,23 @@ namespace final
         {
             if (focus_index != -1 && level_select != -1 && list_quests[level_select].Count >0)
             {
-                list_quests[level_select].RemoveAt(focus_index);
-                for (int i = 0; i < list_quests[level_select].Count; i++)
+                SqlConnection quest_db_connect;
+                quest_db_connect = new SqlConnection();
+                quest_db_connect.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
+                     "Integrated Security=True";
+                quest_db_connect.Open();
+                SqlCommand sql = new SqlCommand($"DELETE   FROM sub_quest WHERE db_index={focus_index} ", quest_db_connect);
+                sql.ExecuteNonQuery();
+                quest_db_connect.Close();
+                for (int i = list_quests[level_select].Count - 1; i >= 0; i++)
                 {
-                    list_quests[level_select][i].setindex(i);
-                }
+                    if (list_quests[level_select][i].getindex() == focus_index)
+                    {
+                        list_quests[level_select].Remove(list_quests[level_select][i]);
+                        break;
+                    }
+                }               
             }
             focus_index = -1;
         }
@@ -167,7 +204,7 @@ namespace final
                     "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
                      "Integrated Security=True";
                 quest_db_connect.Open();
-                SqlCommand sql = new SqlCommand($"UPDATE  main_quest SET name=N'{text.Text}' ", quest_db_connect);
+                SqlCommand sql = new SqlCommand($"UPDATE  main_quest SET name=N'{text.Text}' WHERE id={index} ", quest_db_connect);
                 sql.ExecuteNonQuery();
                 quest_db_connect.Close();
                 label_quest.Text = text.Text;

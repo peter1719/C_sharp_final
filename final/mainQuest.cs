@@ -49,9 +49,11 @@ namespace final
             {
                 mQuestInfo temp = new mQuestInfo();
                 temp.quest_name = datarow[1].ToString();//name
-                temp.setmq(this);
-                temp.setindex((int)datarow[0]);
+                temp.setmq(this);//set the main quest
+                temp.setindex((int)datarow[0]);//add db index of the quest
+                temp.db_sub_quest();//load sub quest
                 mQuests.Add(temp);
+               
                 if (flp_left.Controls.Count < 0)
                     flp_left.Controls.Clear();
                 else
@@ -60,6 +62,7 @@ namespace final
             }
             quest_db_connect.Close();           
         }
+       
 
         public void recolor ()
         {
@@ -144,13 +147,17 @@ namespace final
             if (level_select == -1 || focus_index == -1)
                 return;
             quest_db_connect.Open();
-            SqlCommand sql = new SqlCommand($"INSERT INTO sub_quest(id,name,level,time) VALUES ({focus_index},N'按下重新命名...',{level_select},0) ", quest_db_connect);
-            sql.ExecuteNonQuery();
+            DataSet ds = new DataSet();
+            SqlDataAdapter db_quest = new SqlDataAdapter
+                                        ($"INSERT INTO sub_quest(id,name,level,time) OUTPUT INSERTED.db_index VALUES ({focus_index},N'按下重新命名...',{level_select},0) ", quest_db_connect);
+            db_quest.Fill(ds);
+            int return_index = (int)( ds.Tables[0].Rows[0][0] );
+            quest_db_connect.Close();
             //creat a temp sub main quest           
             subMainQuest temp = new subMainQuest(level_select, info_find_by_index(focus_index));
-            temp.quest_name = "重新命名...";
+            temp.quest_name = "按下重新命名...";
             temp.engage_time = 0;
-            temp.setindex(info_find_by_index(focus_index).list_quests[level_select].Count);
+            temp.setindex(return_index);
             info_find_by_index(focus_index).list_quests[level_select].Add(temp);
             load_sub_quest(info_find_by_index(focus_index).list_quests[level_select],level_select);           
         }
