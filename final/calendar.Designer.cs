@@ -210,6 +210,7 @@
             // 
             this.button3.BackgroundImage = global::final.Properties.Resources.next;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Segoe UI Symbol", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(138, 2);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

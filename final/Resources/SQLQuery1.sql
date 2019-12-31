@@ -1,0 +1,1 @@
+﻿INSERT INTO main_quest (name) VALUES ('test')
