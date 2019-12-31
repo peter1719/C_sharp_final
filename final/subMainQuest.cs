@@ -126,6 +126,7 @@ namespace final
         private void btn_train_Click (object sender, EventArgs e)
         {
             practiceForm pForm = new practiceForm();
+            pForm.level = _level;
             pForm.Show();
         }
 

@@ -13,6 +13,7 @@ namespace final
        
     public partial class practiceForm : Form
     {
+        public int level = 0;
 
         string[] INFO = { "克西和一", "3", "20", "66", "80", "65", "67", "64", "99" };
 
