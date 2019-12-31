@@ -19,7 +19,7 @@ namespace final
         public int level = 0; // 簡單:0, 普通:1, 大師:2
         private string[] LEVELS = { "【簡單】", "【普通】", "【大師】" };
         private int[] INTERVALS = { 150, 300, 450 };
-
+        private subMainQuest smq;
         // 角色資訊
         private string[] INFO = { "克西和一", "3", "20", "66", "80", "65", "67", "64", "99" };
 
@@ -42,8 +42,9 @@ namespace final
 
         ////////////////////////////////////////////////////////////////////// 函式 //////////////////////////////////////////////////////////////////////
 
-        public practiceForm()
+        public practiceForm(subMainQuest smq)
         {
+            this.smq = smq;
             InitializeComponent();
         }
 
@@ -181,6 +182,7 @@ namespace final
 
         private void practiceForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            smq.engage_time += minute;
             Form1.mchar.set_all_properties(int.Parse(INFO[5]), int.Parse(INFO[7]), int.Parse(INFO[2]), int.Parse(INFO[8]), int.Parse(INFO[1]), int.Parse(INFO[6]), int.Parse(INFO[3]), INFO[0]);
         }
     }
