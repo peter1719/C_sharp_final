@@ -21,7 +21,7 @@ namespace final
         private int ESP = 0;
         private int time = 0;
         private int reward = 0;
-        private int level = 5;
+        private int level = 1;
         private int energy = 0;
         private int exe = 0;
         private int max_exe = 0;
@@ -34,9 +34,9 @@ namespace final
             ESP = _ESP;
             label_ESP.Text = "超能力: " + ESP.ToString();
             time = _time;
-            label_time.Text = "時間: " + time.ToString() + " 分鐘";
+            label_time.Text = "時數: " + time.ToString() + "分鐘";
             reward = _reward;
-            label_reward.Text = "獎勵: " + reward.ToString();
+            label_reward.Text = "獎勵點數: " + reward.ToString();
             level = _level;
             label_level.Text = "等級: " + level.ToString();
             energy = _energy;
@@ -52,7 +52,7 @@ namespace final
             label_wisdom.Text = "智力: " + wisdom.ToString();
             label_ESP.Text = "超能力: " + ESP.ToString();
             label_time.Text = "時間: " + time.ToString() + " 分鐘";
-            label_reward.Text = "獎勵: " + reward.ToString();
+            label_reward.Text = "獎勵點數: " + reward.ToString();
             label_level.Text = "等級: " + level.ToString();
             label_energy.Text = "體力: " + energy.ToString();
             max_exe = (int)( Math.Pow(level, EXEbase) - Math.Pow(level - 1, EXEbase) ) * 10;

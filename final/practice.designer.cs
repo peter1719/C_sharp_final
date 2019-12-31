@@ -32,6 +32,7 @@
             this.pgb_practice = new System.Windows.Forms.ProgressBar();
             this.timer_practice = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lb_hint = new System.Windows.Forms.Label();
             this.lb_time = new System.Windows.Forms.Label();
             this.cbb_practice = new System.Windows.Forms.ComboBox();
             this.btn_end = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.lb_hours = new System.Windows.Forms.Label();
             this.lb_grade = new System.Windows.Forms.Label();
             this.lb_name = new System.Windows.Forms.Label();
-            this.lb_hint = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_gif)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -58,12 +58,12 @@
             // 
             // pgb_practice
             // 
-            this.pgb_practice.BackColor = System.Drawing.Color.White;
+            this.pgb_practice.BackColor = System.Drawing.Color.DimGray;
             this.pgb_practice.ForeColor = System.Drawing.Color.Aqua;
-            this.pgb_practice.Location = new System.Drawing.Point(28, 271);
-            this.pgb_practice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pgb_practice.Location = new System.Drawing.Point(27, 309);
+            this.pgb_practice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pgb_practice.Name = "pgb_practice";
-            this.pgb_practice.Size = new System.Drawing.Size(282, 30);
+            this.pgb_practice.Size = new System.Drawing.Size(301, 32);
             this.pgb_practice.TabIndex = 3;
             this.pgb_practice.Value = 40;
             // 
@@ -85,13 +85,27 @@
             this.groupBox1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox1.Location = new System.Drawing.Point(9, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(334, 381);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.groupBox1.Size = new System.Drawing.Size(355, 443);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "修煉狀態";
+            // 
+            // lb_hint
+            // 
+            this.lb_hint.BackColor = System.Drawing.Color.DimGray;
+            this.lb_hint.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lb_hint.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lb_hint.ForeColor = System.Drawing.Color.White;
+            this.lb_hint.Location = new System.Drawing.Point(27, 110);
+            this.lb_hint.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_hint.Name = "lb_hint";
+            this.lb_hint.Size = new System.Drawing.Size(301, 171);
+            this.lb_hint.TabIndex = 7;
+            this.lb_hint.Text = "請點選修煉項目";
+            this.lb_hint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lb_time
             // 
@@ -99,10 +113,10 @@
             this.lb_time.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lb_time.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lb_time.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lb_time.Location = new System.Drawing.Point(198, 30);
+            this.lb_time.Location = new System.Drawing.Point(204, 50);
             this.lb_time.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_time.Name = "lb_time";
-            this.lb_time.Size = new System.Drawing.Size(112, 32);
+            this.lb_time.Size = new System.Drawing.Size(124, 39);
             this.lb_time.TabIndex = 6;
             this.lb_time.Text = "0分 : 0秒";
             this.lb_time.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -113,10 +127,10 @@
             this.cbb_practice.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cbb_practice.ForeColor = System.Drawing.Color.White;
             this.cbb_practice.FormattingEnabled = true;
-            this.cbb_practice.Location = new System.Drawing.Point(28, 30);
-            this.cbb_practice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbb_practice.Location = new System.Drawing.Point(27, 51);
+            this.cbb_practice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbb_practice.Name = "cbb_practice";
-            this.cbb_practice.Size = new System.Drawing.Size(112, 32);
+            this.cbb_practice.Size = new System.Drawing.Size(125, 39);
             this.cbb_practice.TabIndex = 5;
             this.cbb_practice.Text = "修煉項目";
             this.cbb_practice.Click += new System.EventHandler(this.cbb_practice_Click);
@@ -127,10 +141,10 @@
             this.btn_end.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_end.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_end.Image = global::final.Properties.Resources.wood_stop;
-            this.btn_end.Location = new System.Drawing.Point(198, 320);
-            this.btn_end.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_end.Location = new System.Drawing.Point(204, 367);
+            this.btn_end.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_end.Name = "btn_end";
-            this.btn_end.Size = new System.Drawing.Size(112, 45);
+            this.btn_end.Size = new System.Drawing.Size(124, 52);
             this.btn_end.TabIndex = 4;
             this.btn_end.Text = "結束修煉";
             this.btn_end.UseVisualStyleBackColor = false;
@@ -138,12 +152,12 @@
             // 
             // pbx_gif
             // 
-            this.pbx_gif.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pbx_gif.BackColor = System.Drawing.Color.DimGray;
             this.pbx_gif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbx_gif.Location = new System.Drawing.Point(28, 81);
-            this.pbx_gif.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbx_gif.Location = new System.Drawing.Point(27, 110);
+            this.pbx_gif.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pbx_gif.Name = "pbx_gif";
-            this.pbx_gif.Size = new System.Drawing.Size(282, 168);
+            this.pbx_gif.Size = new System.Drawing.Size(301, 171);
             this.pbx_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbx_gif.TabIndex = 0;
             this.pbx_gif.TabStop = false;
@@ -154,10 +168,10 @@
             this.btn_start.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_start.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_start.Image = global::final.Properties.Resources.wood_start;
-            this.btn_start.Location = new System.Drawing.Point(28, 320);
-            this.btn_start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_start.Location = new System.Drawing.Point(27, 367);
+            this.btn_start.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_start.Name = "btn_start";
-            this.btn_start.Size = new System.Drawing.Size(112, 45);
+            this.btn_start.Size = new System.Drawing.Size(124, 52);
             this.btn_start.TabIndex = 2;
             this.btn_start.Text = "開始修煉";
             this.btn_start.UseVisualStyleBackColor = false;
@@ -169,11 +183,11 @@
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.groupBox2.Location = new System.Drawing.Point(356, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Location = new System.Drawing.Point(386, 10);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox2.Size = new System.Drawing.Size(220, 381);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.groupBox2.Size = new System.Drawing.Size(259, 443);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "角色狀態";
@@ -186,19 +200,19 @@
             this.panel2.Controls.Add(this.lb_strength);
             this.panel2.Controls.Add(this.lb_wit);
             this.panel2.Controls.Add(this.lb_bonus);
-            this.panel2.Location = new System.Drawing.Point(16, 204);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Location = new System.Drawing.Point(16, 239);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(189, 161);
+            this.panel2.Size = new System.Drawing.Size(228, 180);
             this.panel2.TabIndex = 9;
             // 
             // lb_superpower
             // 
             this.lb_superpower.BackColor = System.Drawing.Color.MediumOrchid;
-            this.lb_superpower.Location = new System.Drawing.Point(20, 85);
+            this.lb_superpower.Location = new System.Drawing.Point(20, 95);
             this.lb_superpower.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_superpower.Name = "lb_superpower";
-            this.lb_superpower.Size = new System.Drawing.Size(145, 24);
+            this.lb_superpower.Size = new System.Drawing.Size(180, 25);
             this.lb_superpower.TabIndex = 9;
             this.lb_superpower.Text = "超能力: 68";
             this.lb_superpower.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -206,10 +220,10 @@
             // lb_strength
             // 
             this.lb_strength.BackColor = System.Drawing.Color.Violet;
-            this.lb_strength.Location = new System.Drawing.Point(20, 47);
+            this.lb_strength.Location = new System.Drawing.Point(20, 55);
             this.lb_strength.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_strength.Name = "lb_strength";
-            this.lb_strength.Size = new System.Drawing.Size(145, 24);
+            this.lb_strength.Size = new System.Drawing.Size(180, 25);
             this.lb_strength.TabIndex = 8;
             this.lb_strength.Text = "體力: 63";
             this.lb_strength.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -217,10 +231,10 @@
             // lb_wit
             // 
             this.lb_wit.BackColor = System.Drawing.Color.DodgerBlue;
-            this.lb_wit.Location = new System.Drawing.Point(20, 10);
+            this.lb_wit.Location = new System.Drawing.Point(20, 15);
             this.lb_wit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_wit.Name = "lb_wit";
-            this.lb_wit.Size = new System.Drawing.Size(145, 24);
+            this.lb_wit.Size = new System.Drawing.Size(180, 25);
             this.lb_wit.TabIndex = 7;
             this.lb_wit.Text = "智力: 65";
             this.lb_wit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -228,10 +242,10 @@
             // lb_bonus
             // 
             this.lb_bonus.BackColor = System.Drawing.Color.DeepPink;
-            this.lb_bonus.Location = new System.Drawing.Point(20, 120);
+            this.lb_bonus.Location = new System.Drawing.Point(20, 135);
             this.lb_bonus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_bonus.Name = "lb_bonus";
-            this.lb_bonus.Size = new System.Drawing.Size(145, 24);
+            this.lb_bonus.Size = new System.Drawing.Size(180, 25);
             this.lb_bonus.TabIndex = 4;
             this.lb_bonus.Text = "獎勵點數: 100";
             this.lb_bonus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -244,19 +258,19 @@
             this.panel1.Controls.Add(this.lb_hours);
             this.panel1.Controls.Add(this.lb_grade);
             this.panel1.Controls.Add(this.lb_name);
-            this.panel1.Location = new System.Drawing.Point(16, 30);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(16, 40);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(189, 160);
+            this.panel1.Size = new System.Drawing.Size(228, 180);
             this.panel1.TabIndex = 8;
             // 
             // lb_experience
             // 
             this.lb_experience.BackColor = System.Drawing.Color.Lime;
-            this.lb_experience.Location = new System.Drawing.Point(20, 124);
+            this.lb_experience.Location = new System.Drawing.Point(20, 135);
             this.lb_experience.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_experience.Name = "lb_experience";
-            this.lb_experience.Size = new System.Drawing.Size(145, 24);
+            this.lb_experience.Size = new System.Drawing.Size(180, 25);
             this.lb_experience.TabIndex = 6;
             this.lb_experience.Text = "經驗值: 87/88";
             this.lb_experience.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -264,10 +278,10 @@
             // lb_hours
             // 
             this.lb_hours.BackColor = System.Drawing.Color.Yellow;
-            this.lb_hours.Location = new System.Drawing.Point(20, 86);
+            this.lb_hours.Location = new System.Drawing.Point(20, 95);
             this.lb_hours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_hours.Name = "lb_hours";
-            this.lb_hours.Size = new System.Drawing.Size(145, 24);
+            this.lb_hours.Size = new System.Drawing.Size(180, 25);
             this.lb_hours.TabIndex = 4;
             this.lb_hours.Text = "時數: 84分鐘";
             this.lb_hours.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -275,10 +289,10 @@
             // lb_grade
             // 
             this.lb_grade.BackColor = System.Drawing.Color.Orange;
-            this.lb_grade.Location = new System.Drawing.Point(20, 49);
+            this.lb_grade.Location = new System.Drawing.Point(20, 55);
             this.lb_grade.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_grade.Name = "lb_grade";
-            this.lb_grade.Size = new System.Drawing.Size(145, 24);
+            this.lb_grade.Size = new System.Drawing.Size(180, 25);
             this.lb_grade.TabIndex = 3;
             this.lb_grade.Text = "等級: 5";
             this.lb_grade.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -286,36 +300,24 @@
             // lb_name
             // 
             this.lb_name.BackColor = System.Drawing.Color.Red;
-            this.lb_name.Location = new System.Drawing.Point(20, 12);
+            this.lb_name.Location = new System.Drawing.Point(20, 15);
             this.lb_name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_name.Name = "lb_name";
-            this.lb_name.Size = new System.Drawing.Size(145, 24);
+            this.lb_name.Size = new System.Drawing.Size(180, 25);
             this.lb_name.TabIndex = 1;
             this.lb_name.Text = "名稱: 克西和夫";
             this.lb_name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lb_hint
-            // 
-            this.lb_hint.BackColor = System.Drawing.Color.White;
-            this.lb_hint.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lb_hint.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lb_hint.ForeColor = System.Drawing.Color.DimGray;
-            this.lb_hint.Location = new System.Drawing.Point(28, 81);
-            this.lb_hint.Name = "lb_hint";
-            this.lb_hint.Size = new System.Drawing.Size(282, 168);
-            this.lb_hint.TabIndex = 7;
-            this.lb_hint.Text = "請先選擇修煉項目!";
-            this.lb_hint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // practiceForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(587, 402);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(662, 465);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.groupBox2);
+            this.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "practiceForm";
             this.Text = "英雄培育所";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.practiceForm_FormClosing);
