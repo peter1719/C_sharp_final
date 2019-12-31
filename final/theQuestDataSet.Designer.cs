@@ -2369,24 +2369,24 @@ SELECT Id, name, level, time FROM sub_quest WHERE (Id = @Id)";
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [calendar_data] WHERE (([date] = @Original_date) AND ((@IsNull_data =" +
-                " 1 AND [data] IS NULL) OR ([data] = @Original_data)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[calendar_data] WHERE (([date] = @Original_date) AND ((@IsNull_" +
+                "data = 1 AND [data] IS NULL) OR ([data] = @Original_data)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_data", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_data", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [calendar_data] ([date], [data]) VALUES (@date, @data);\r\nSELECT date," +
-                " data FROM calendar_data WHERE (date = @date)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[calendar_data] ([date], [data]) VALUES (@date, @data);\r\nSELECT" +
+                " date, data FROM calendar_data WHERE (date = @date)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@data", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [calendar_data] SET [date] = @date, [data] = @data WHERE (([date] = @Origi" +
-                "nal_date) AND ((@IsNull_data = 1 AND [data] IS NULL) OR ([data] = @Original_data" +
-                ")));\r\nSELECT date, data FROM calendar_data WHERE (date = @date)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[calendar_data] SET [date] = @date, [data] = @data WHERE (([date] = " +
+                "@Original_date) AND ((@IsNull_data = 1 AND [data] IS NULL) OR ([data] = @Origina" +
+                "l_data)));\r\nSELECT date, data FROM calendar_data WHERE (date = @date)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@data", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2408,7 +2408,7 @@ SELECT Id, name, level, time FROM sub_quest WHERE (Id = @Id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT  calendar_data.*\r\nFROM      calendar_data";
+            this._commandCollection[0].CommandText = "SELECT date, data FROM dbo.calendar_data";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

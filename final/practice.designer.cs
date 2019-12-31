@@ -57,10 +57,10 @@
             // 
             // pgb_practice
             // 
-            this.pgb_practice.BackColor = System.Drawing.Color.White;
-            this.pgb_practice.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.pgb_practice.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pgb_practice.ForeColor = System.Drawing.Color.Aqua;
             this.pgb_practice.Location = new System.Drawing.Point(28, 271);
-            this.pgb_practice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pgb_practice.Margin = new System.Windows.Forms.Padding(2);
             this.pgb_practice.Name = "pgb_practice";
             this.pgb_practice.Size = new System.Drawing.Size(282, 30);
             this.pgb_practice.TabIndex = 3;
@@ -83,9 +83,9 @@
             this.groupBox1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox1.Location = new System.Drawing.Point(9, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(334, 381);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
@@ -112,7 +112,7 @@
             this.cbb_practice.ForeColor = System.Drawing.Color.White;
             this.cbb_practice.FormattingEnabled = true;
             this.cbb_practice.Location = new System.Drawing.Point(28, 30);
-            this.cbb_practice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbb_practice.Margin = new System.Windows.Forms.Padding(2);
             this.cbb_practice.Name = "cbb_practice";
             this.cbb_practice.Size = new System.Drawing.Size(112, 32);
             this.cbb_practice.TabIndex = 5;
@@ -126,7 +126,7 @@
             this.btn_end.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_end.Image = global::final.Properties.Resources.wood_stop;
             this.btn_end.Location = new System.Drawing.Point(198, 320);
-            this.btn_end.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_end.Margin = new System.Windows.Forms.Padding(2);
             this.btn_end.Name = "btn_end";
             this.btn_end.Size = new System.Drawing.Size(112, 45);
             this.btn_end.TabIndex = 4;
@@ -136,10 +136,10 @@
             // 
             // pbx_gif
             // 
-            this.pbx_gif.BackColor = System.Drawing.Color.White;
+            this.pbx_gif.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pbx_gif.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pbx_gif.Location = new System.Drawing.Point(28, 81);
-            this.pbx_gif.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbx_gif.Margin = new System.Windows.Forms.Padding(2);
             this.pbx_gif.Name = "pbx_gif";
             this.pbx_gif.Size = new System.Drawing.Size(282, 168);
             this.pbx_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -153,7 +153,7 @@
             this.btn_start.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_start.Image = global::final.Properties.Resources.wood_start;
             this.btn_start.Location = new System.Drawing.Point(28, 320);
-            this.btn_start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_start.Margin = new System.Windows.Forms.Padding(2);
             this.btn_start.Name = "btn_start";
             this.btn_start.Size = new System.Drawing.Size(112, 45);
             this.btn_start.TabIndex = 2;
@@ -168,9 +168,9 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBox2.Location = new System.Drawing.Point(356, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(220, 381);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
@@ -185,14 +185,14 @@
             this.panel2.Controls.Add(this.lb_wit);
             this.panel2.Controls.Add(this.lb_bonus);
             this.panel2.Location = new System.Drawing.Point(16, 204);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(189, 161);
             this.panel2.TabIndex = 9;
             // 
             // lb_superpower
             // 
-            this.lb_superpower.BackColor = System.Drawing.Color.DarkOrchid;
+            this.lb_superpower.BackColor = System.Drawing.Color.MediumOrchid;
             this.lb_superpower.Location = new System.Drawing.Point(20, 85);
             this.lb_superpower.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_superpower.Name = "lb_superpower";
@@ -203,7 +203,7 @@
             // 
             // lb_strength
             // 
-            this.lb_strength.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.lb_strength.BackColor = System.Drawing.Color.Violet;
             this.lb_strength.Location = new System.Drawing.Point(20, 47);
             this.lb_strength.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_strength.Name = "lb_strength";
@@ -243,14 +243,14 @@
             this.panel1.Controls.Add(this.lb_grade);
             this.panel1.Controls.Add(this.lb_name);
             this.panel1.Location = new System.Drawing.Point(16, 30);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(189, 160);
             this.panel1.TabIndex = 8;
             // 
             // lb_experience
             // 
-            this.lb_experience.BackColor = System.Drawing.Color.LimeGreen;
+            this.lb_experience.BackColor = System.Drawing.Color.Lime;
             this.lb_experience.Location = new System.Drawing.Point(20, 124);
             this.lb_experience.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_experience.Name = "lb_experience";
@@ -283,7 +283,7 @@
             // 
             // lb_name
             // 
-            this.lb_name.BackColor = System.Drawing.Color.Coral;
+            this.lb_name.BackColor = System.Drawing.Color.Red;
             this.lb_name.Location = new System.Drawing.Point(20, 12);
             this.lb_name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_name.Name = "lb_name";
@@ -300,7 +300,7 @@
             this.ClientSize = new System.Drawing.Size(587, 402);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "practiceForm";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.practiceForm_FormClosing);
