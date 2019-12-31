@@ -18,8 +18,8 @@ namespace final
         // 修煉難度之分
         public int level = 0; // 簡單:0, 普通:1, 大師:2
         private string[] LEVELS = { "【簡單】", "【普通】", "【大師】" };
-        private int[] INTERVALS = { 150, 300, 50 };
-        private subMainQuest smq;
+        private int[] INTERVALS = { 150, 300, 450 };
+
         // 角色資訊
         private string[] INFO = { "克西和一", "3", "20", "66", "80", "65", "67", "64", "99" };
 
@@ -42,9 +42,8 @@ namespace final
 
         ////////////////////////////////////////////////////////////////////// 函式 //////////////////////////////////////////////////////////////////////
 
-        public practiceForm(subMainQuest smq)
+        public practiceForm()
         {
-            this.smq = smq;
             InitializeComponent();
         }
 
@@ -56,7 +55,7 @@ namespace final
 
         private void upgrade()
         {
-            // 智力、體力、超能力、獎勵點數ranobj.Next(int.Parse(INFO[1]))
+            // 智力、體力、超能力、獎勵點數
             for (int i = 5; i < 9; i++)
             {
                 int value = int.Parse(INFO[i]) + (level + 1) * UPDATES[current_gif, (i - 5)];
@@ -116,7 +115,7 @@ namespace final
             }
             else if (practicing == true)
             {
-                MessageBox.Show("修煉正在進行", "貼心提醒", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("修煉正在進行中", "貼心提醒", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (index == -1)
             {
@@ -182,7 +181,6 @@ namespace final
 
         private void practiceForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            smq.engage_time += minute;
             Form1.mchar.set_all_properties(int.Parse(INFO[5]), int.Parse(INFO[7]), int.Parse(INFO[2]), int.Parse(INFO[8]), int.Parse(INFO[1]), int.Parse(INFO[6]), int.Parse(INFO[3]), INFO[0]);
         }
     }
