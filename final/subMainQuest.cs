@@ -17,7 +17,7 @@ namespace final
 
         private string[ ] master_level = { "不熟", "稍微知道", "熟悉", "精通" };
         private int index = 0;
-        public int _level = 2;
+        public int _level = 0;
         public int base_time = 20;
         private mQuestInfo _mqi;
 
@@ -64,7 +64,8 @@ namespace final
                 int i = 0;
                 int full = 0;
                 int width = 0;
-                i = (int)Math.Log((_engage_time / base_time),_level);
+                int level_base = 2 + _level;
+                i = (int)Math.Log((_engage_time / base_time), level_base);
               
                 if (i > master_level.Length - 1)
                     i = master_level.Length - 1;
@@ -72,8 +73,8 @@ namespace final
                     i = 0;
                 if (engage_time > base_time)
                 {
-                    full = (int)( Math.Pow(_level, i + 1) - Math.Pow(_level, i) ) * base_time;
-                    width = ( this.Width - panelindicator.Width) * ( engage_time - (int)Math.Pow(_level, i) * base_time ) / full;
+                    full = (int)( Math.Pow(level_base, i + 1) - Math.Pow(level_base, i) ) * base_time;
+                    width = ( this.Width - panelindicator.Width) * ( engage_time - (int)Math.Pow(level_base, i) * base_time ) / full;
                     panel_exe.Width = width;
                 }
                 else
@@ -135,10 +136,18 @@ namespace final
 
         private void btn_train_Click (object sender, EventArgs e)
         {
-            select_sub(sender, e);
-            practiceForm pForm = new practiceForm(this);
-            pForm.level = _level;
-            pForm.Show();
+            if (!Form1.on_training)
+            {
+                Form1.on_training = true;
+                select_sub(sender, e);
+                practiceForm pForm = new practiceForm(this);
+                pForm.level = _level;
+                pForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("一次只能修練一個項目喔!", "貼心提醒", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void pictureBox1_Click (object sender, EventArgs e)

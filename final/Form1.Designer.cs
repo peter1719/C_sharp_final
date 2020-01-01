@@ -71,6 +71,7 @@
             this.btn_other.TabIndex = 5;
             this.btn_other.Text = "其他";
             this.btn_other.UseVisualStyleBackColor = false;
+            this.btn_other.Click += new System.EventHandler(this.btn_other_Click);
             // 
             // btn_branch
             // 

@@ -264,6 +264,8 @@ namespace final
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
+            if (back == null)
+                return;
             back.Size = Size;
             back.Location = Location;
 

@@ -13,6 +13,7 @@ namespace final
     public partial class Form1 : Form
     {
         static Form1 _obj;
+        public static bool on_training = false;
         public static mainChar mchar = new mainChar();
         private mainQuest mquest = new mainQuest();
         private Calendar calendar = new Calendar();
@@ -80,6 +81,16 @@ namespace final
             Focus();
         }
 
+        private void btn_other_Click (object sender, EventArgs e)
+        {
+            if (!panelcontainer.Controls.ContainsKey("mainQuest"))
+            {
+                panelcontainer.Controls.Clear();
+                mquest.Dock = DockStyle.Fill;
+                panelcontainer.Controls.Add(mquest);
+                panelcontainer.Controls["mainQuest"].BringToFront();
+            }
+        }
 
     }
 }

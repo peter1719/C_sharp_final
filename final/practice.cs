@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 namespace final
 {
@@ -35,7 +37,7 @@ namespace final
         private bool practicing = false;
 
         // 計時器
-        private int timer_count = 0;  int minute = 0; int second = 0; int second_count = 0; int second_remainder = 0;
+        private int timer_count = 100;  int minute = 0; int second = 0; int second_count = 0; int second_remainder = 0;int time_reward = 0;
 
         // 亂數
         Random ranobj = new Random();
@@ -76,7 +78,7 @@ namespace final
             }
 
             // 時數
-            if (second == 0 && second_remainder == 0) INFO[2] = (int.Parse(INFO[2]) + 1).ToString();
+            if (second == 0 && second_remainder == 0) INFO[2] = (int.Parse(INFO[2]) + 0).ToString();
 
             // 經驗值
             INFO[3] = pgb_practice.Value.ToString();
@@ -133,6 +135,17 @@ namespace final
             }
             else
             {
+                //save the status
+                smq.engage_time += minute;
+                Form1.mchar.set_all_properties(int.Parse(INFO[5]), int.Parse(INFO[7]), int.Parse(INFO[2]), int.Parse(INFO[8]), int.Parse(INFO[1]), int.Parse(INFO[6]), int.Parse(INFO[3]), INFO[0]);
+                Form1.mchar.write_pros_file();
+                db_sub_quest_save();
+                //engage time update
+                INFO[2] = ( int.Parse(INFO[2]) + minute ).ToString();
+                lb_hours.Text = "時數: " + INFO[2] + "分鐘";
+                timer_count = 0;//set the time to 0
+                minute = 0;
+                //
                 practicing = false;
                 timer_practice.Enabled = false;
                 pbx_gif.Image = null;
@@ -149,27 +162,55 @@ namespace final
             pgb_practice.Value += 1;
 
             // Renew Timer
-            timer_count += 1;
+            timer_count += 1;            
             second_count = timer_count / (1000 / timer_practice.Interval);
             second_remainder = timer_count % (1000 / timer_practice.Interval);
             minute = second_count / 60;
             second = second_count % 60;
             lb_time.Text = minute.ToString() + "分:" + second.ToString() + "秒";
-
+            if (minute >= 45)
+                take_rest();
+            time_reward += 1;
+            if (time_reward > 60 * ( 1000 / timer_practice.Interval ))
+            {
+                INFO[8] = ( int.Parse(INFO[8]) + 1 ).ToString();
+                time_reward = 0;
+            }
             // Renew INFO
             renew_info();
             show_info();
         }
+        private void take_rest ()
+        {
+            //save the status
+            smq.engage_time += minute;
+            Form1.mchar.set_all_properties(int.Parse(INFO[5]), int.Parse(INFO[7]), int.Parse(INFO[2]), int.Parse(INFO[8]), int.Parse(INFO[1]), int.Parse(INFO[6]), int.Parse(INFO[3]), INFO[0]);
+            Form1.mchar.write_pros_file();
+            db_sub_quest_save();
+            //engage time update
+            INFO[2] = ( int.Parse(INFO[2]) + minute ).ToString();
+            lb_hours.Text = "時數: " + INFO[2] + "分鐘";
+            //stop the counter
+            timer_count = 0;//set the time to 0
+            minute = 0;
+            practicing = false;
+            timer_practice.Enabled = false;
+            pbx_gif.Image = null;
+            pbx_gif.BackColor = SystemColors.Control;
+            lb_hint.Visible = true;
+            btn_end.Text = "結束修煉";            
+            MessageBox.Show("休息是為了走更長遠的路，每45分鐘就要休息一下喔!", "貼心提醒", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load (object sender, EventArgs e)
         {
             groupBox1.Text = "修煉狀態" + LEVELS[level];
             lb_hint.Text = "請點選修煉項目";
             get_info();
-            pbx_gif.Image = null;       
-            pgb_practice.Value = int.Parse(INFO[3]);
+            pbx_gif.Image = null;
             pgb_practice.Maximum = int.Parse(INFO[4]);
-            pgb_practice.Style = System.Windows.Forms.ProgressBarStyle.Continuous;            
+            pgb_practice.Value = int.Parse(INFO[3]);
+            pgb_practice.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             lb_time.Text = minute.ToString() + "分 : " + second.ToString() + "秒";
             show_info();
         }
@@ -182,8 +223,25 @@ namespace final
 
         private void practiceForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Form1.on_training = false;
             smq.engage_time += minute;
+            //engage time update
+            INFO[2] = ( int.Parse(INFO[2]) + minute ).ToString();
             Form1.mchar.set_all_properties(int.Parse(INFO[5]), int.Parse(INFO[7]), int.Parse(INFO[2]), int.Parse(INFO[8]), int.Parse(INFO[1]), int.Parse(INFO[6]), int.Parse(INFO[3]), INFO[0]);
+            Form1.mchar.write_pros_file();
+            db_sub_quest_save();
+        }
+        private void db_sub_quest_save ()
+        {
+            SqlConnection quest_db_connect;
+            quest_db_connect = new SqlConnection();
+            quest_db_connect.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
+                 "Integrated Security=True";
+            quest_db_connect.Open();
+            SqlCommand sql = new SqlCommand($"UPDATE  sub_quest SET time= {smq.engage_time} WHERE db_index = {smq.getindex()}", quest_db_connect);
+            sql.ExecuteNonQuery();
+            quest_db_connect.Close();
         }
     }
 }
