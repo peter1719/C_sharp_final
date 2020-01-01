@@ -59,8 +59,8 @@ namespace final
             // 智力、體力、超能力、獎勵點數
             for (int i = 5; i < 9; i++)
             {
-                int value = int.Parse(INFO[i]) + (level + 1) * UPDATES[current_gif, (i - 5)];
-                value = Convert.ToInt32(value * 0.5) + ranobj.Next(0, int.Parse(INFO[1]));
+                int value = Convert.ToInt32( (level + 1) * UPDATES[current_gif, (i - 5)] * 0.5 ); // 升級數值
+                value += int.Parse(INFO[i]) + ranobj.Next(0, int.Parse(INFO[1])); // 原本數值 + 隨機數值
                 INFO[i] = value.ToString();
             }         
         }
