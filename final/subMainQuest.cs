@@ -14,13 +14,13 @@ namespace final
 {
     public partial class subMainQuest : UserControl
     {
-
+        TextBox rename;
         private string[ ] master_level = { "不熟", "稍微知道", "熟悉", "精通" };
         private int index = 0;
         public int _level = 0;
         public int base_time = 20;
         private mQuestInfo _mqi;
-
+        private bool edit_state = false;
         public void setindex (int _index)
         {
             index = _index;
@@ -122,6 +122,23 @@ namespace final
             _mqi.recolor_sub_quest();
             _mqi.focus_index = index;
             panel_indicator.BackColor = Color.Red;
+            if (edit_state && rename.Text != "")
+            {
+                edit_state = false;
+                SqlConnection quest_db_connect;
+                quest_db_connect = new SqlConnection();
+                quest_db_connect.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
+                     "Integrated Security=True";
+                quest_db_connect.Open();
+                SqlCommand sql = new SqlCommand($"UPDATE  sub_quest SET name=N'{rename.Text}' WHERE db_index = {index}", quest_db_connect);
+                sql.ExecuteNonQuery();
+                quest_db_connect.Close();
+                label_quest_name.Text = rename.Text;
+                rename.Dispose();
+                label_quest_name.BringToFront();
+                edit_state = false;
+            }
         }
 
         private void subMainQuest_Click (object sender, EventArgs e)
@@ -163,7 +180,8 @@ namespace final
 
         private void label_quest_name_DoubleClick (object sender, EventArgs e)
         {
-            TextBox rename = new TextBox();
+            edit_state = true;
+            rename = new TextBox();
             rename.Location = label_quest_name.Location;
             rename.Width = label_quest_name.Width;
             rename.Height = label_quest_name.Height;
@@ -178,6 +196,7 @@ namespace final
             TextBox text = sender as TextBox;
             if (e.KeyCode == Keys.Enter &&  text.Text != "" )
             {
+                edit_state = false;
                 SqlConnection quest_db_connect;
                 quest_db_connect = new SqlConnection();
                 quest_db_connect.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +

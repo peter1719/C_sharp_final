@@ -50,19 +50,21 @@
             // 
             // btn_easy
             // 
+            this.btn_easy.BackColor = System.Drawing.Color.White;
+            this.btn_easy.ForeColor = System.Drawing.Color.Black;
             this.btn_easy.Location = new System.Drawing.Point(17, 66);
-            this.btn_easy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_easy.Margin = new System.Windows.Forms.Padding(4);
             this.btn_easy.Name = "btn_easy";
             this.btn_easy.Size = new System.Drawing.Size(63, 29);
             this.btn_easy.TabIndex = 1;
             this.btn_easy.Text = "簡單";
-            this.btn_easy.UseVisualStyleBackColor = true;
+            this.btn_easy.UseVisualStyleBackColor = false;
             this.btn_easy.Click += new System.EventHandler(this.btn_easy_Click);
             // 
             // btn_normall
             // 
             this.btn_normall.Location = new System.Drawing.Point(88, 66);
-            this.btn_normall.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_normall.Margin = new System.Windows.Forms.Padding(4);
             this.btn_normall.Name = "btn_normall";
             this.btn_normall.Size = new System.Drawing.Size(51, 29);
             this.btn_normall.TabIndex = 2;
@@ -73,7 +75,7 @@
             // btn_master
             // 
             this.btn_master.Location = new System.Drawing.Point(147, 66);
-            this.btn_master.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_master.Margin = new System.Windows.Forms.Padding(4);
             this.btn_master.Name = "btn_master";
             this.btn_master.Size = new System.Drawing.Size(58, 29);
             this.btn_master.TabIndex = 3;
@@ -85,7 +87,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Location = new System.Drawing.Point(0, 95);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(225, 15);
             this.panel1.TabIndex = 4;
@@ -113,7 +115,7 @@
             this.Controls.Add(this.btn_easy);
             this.Controls.Add(this.label_quest);
             this.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "mQuestInfo";
             this.Size = new System.Drawing.Size(225, 110);
             this.Load += new System.EventHandler(this.mQuestInfo_Load);

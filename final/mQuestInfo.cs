@@ -14,7 +14,9 @@ namespace final
 {
     public partial class mQuestInfo : UserControl
     {
+        bool edit_state = false;
         private mainQuest _mq;
+        TextBox rename;
         public List<subMainQuest> easy_quest;
         public List<subMainQuest> normal_quest;
         public List<subMainQuest> hard_quest;
@@ -23,7 +25,7 @@ namespace final
         public int focus_index = -1;//sub main select
 
         private int index = 0;//db index
-        public void setmq ( mainQuest mq)
+        public void setmq (mainQuest mq)
         {
             _mq = mq;
         }
@@ -57,9 +59,47 @@ namespace final
                 panel1 = value;
             }
         }
+        public Button button_easy
+        {
+            get
+            {
+                return btn_easy;
+            }
+            set
+            {
+                btn_easy = value;
+            }
+        }
+        public Button button_normall
+        {
+            get
+            {
+                return btn_normall;
+            }
+            set
+            {
+                btn_normall = value;
+            }
+        }
+
+        public Button button_master
+        {
+            get
+            {
+                return btn_master;
+            }
+            set
+            {
+                btn_master = value;
+            }
+        }
         private void mQuestInfo_Load (object sender, EventArgs e)
         {
-
+            this.Click += new EventHandler(edit_set);
+            foreach (Control c in Controls)
+            {
+                c.Click += new EventHandler(edit_set);
+            }
         }
 
         #region Properties
@@ -80,7 +120,7 @@ namespace final
 
         #endregion
 
-        
+
 
         private void mQuestInfo_Click (object sender, EventArgs e)
         {
@@ -88,7 +128,7 @@ namespace final
             load_sub_quest(easy_quest, 0);
         }
         private void btn_easy_Click (object sender, EventArgs e)
-        {
+        {           
             select_info();
             load_sub_quest(easy_quest, 0);
             focus_index = -1;
@@ -111,13 +151,29 @@ namespace final
         }
         public void select_info ()
         {
+            btn_easy.BackColor = Color.White;
+            btn_normall.BackColor = Color.White;
+            btn_master.BackColor = Color.White;
             _mq.recolor();
             panel1.BackColor = Color.Red;
             _mq.focus_index = index;
-
         }
         public void load_sub_quest (List<subMainQuest> smq, int level)
         {
+            switch (level)
+            {
+                case 0:
+                    btn_easy.BackColor = Color.FromArgb(0,192,192);
+                        break;
+                case 1:
+                    btn_normall.BackColor = Color.FromArgb(0, 192, 192);
+                    break;
+                case 2:
+                    btn_master.BackColor = Color.FromArgb(0, 192, 192);
+                    break;
+                default:
+                    break;
+            }
             level_select = level;
             _mq.load_sub_quest(smq, level);
         }
@@ -138,10 +194,10 @@ namespace final
             {
                 // id name level time index
                 subMainQuest temp = new subMainQuest((int)datarow[2], this);
-                temp.quest_name =datarow[1].ToString();//name
+                temp.quest_name = datarow[1].ToString();//name
                 temp.engage_time = (int)datarow[3];//time
                 temp.setindex((int)datarow[4]);//set index in the list
-                list_quests[(int)datarow[2]].Add(temp);         
+                list_quests[(int)datarow[2]].Add(temp);
             }
             quest_db_connect.Close();
 
@@ -157,7 +213,7 @@ namespace final
 
         public void remove_sub ()
         {
-            if (focus_index != -1 && level_select != -1 && list_quests[level_select].Count >0)
+            if (focus_index != -1 && level_select != -1 && list_quests[level_select].Count > 0)
             {
                 SqlConnection quest_db_connect;
                 quest_db_connect = new SqlConnection();
@@ -175,16 +231,17 @@ namespace final
                         list_quests[level_select].Remove(list_quests[level_select][i]);
                         break;
                     }
-                }               
+                }
             }
             focus_index = -1;
         }
 
         private void label_quest_DoubleClick (object sender, EventArgs e)
         {
-            TextBox rename = new TextBox();
+            edit_state = true;
+            rename = new TextBox();
             rename.Location = label_quest.Location;
-            rename.Width = this.Width/2;
+            rename.Width = this.Width / 2;
             rename.Height = label_quest.Height;
             rename.Text = label_quest.Text;
             this.Controls.Add(rename);
@@ -194,10 +251,11 @@ namespace final
 
         private void rename_Enter (object sender, KeyEventArgs e)
         {
-            
+
             TextBox text = sender as TextBox;
             if (e.KeyCode == Keys.Enter && text.Text != "")
             {
+                edit_state = false;
                 SqlConnection quest_db_connect;
                 quest_db_connect = new SqlConnection();
                 quest_db_connect.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
@@ -210,6 +268,25 @@ namespace final
                 label_quest.Text = text.Text;
                 text.Dispose();
                 label_quest.BringToFront();
+            }
+        }
+        private void edit_set (object sender, EventArgs e)
+        {
+            if (edit_state && rename.Text != "")
+            {
+                SqlConnection quest_db_connect;
+                quest_db_connect = new SqlConnection();
+                quest_db_connect.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
+                     "Integrated Security=True";
+                quest_db_connect.Open();
+                SqlCommand sql = new SqlCommand($"UPDATE  main_quest SET name=N'{rename.Text}' WHERE id={index} ", quest_db_connect);
+                sql.ExecuteNonQuery();
+                quest_db_connect.Close();
+                label_quest.Text = rename.Text;
+                rename.Dispose();
+                label_quest.BringToFront();
+                edit_state = false;
             }
         }
     }

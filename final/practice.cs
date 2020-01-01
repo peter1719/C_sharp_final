@@ -37,7 +37,7 @@ namespace final
         private bool practicing = false;
 
         // 計時器
-        private int timer_count = 100;  int minute = 0; int second = 0; int second_count = 0; int second_remainder = 0;int time_reward = 0;
+        private int timer_count = 0;  int minute = 0; int second = 0; int second_count = 0; int second_remainder = 0;int time_reward = 0;
 
         // 亂數
         Random ranobj = new Random();

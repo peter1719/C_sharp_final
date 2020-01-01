@@ -69,6 +69,9 @@ namespace final
             //to clear the red color 
             foreach (mQuestInfo m in mQuests)
             {
+                m.button_easy.BackColor = Color.White;
+                m.button_normall.BackColor = Color.White;
+                m.button_master.BackColor = Color.White;
                 m.panel.BackColor = SystemColors.ActiveCaption;              
             }
         }

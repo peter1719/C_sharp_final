@@ -60,46 +60,50 @@
             // 
             // btn_add
             // 
+            this.btn_add.BackColor = System.Drawing.Color.White;
             this.btn_add.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.Location = new System.Drawing.Point(22, 406);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(103, 33);
             this.btn_add.TabIndex = 2;
             this.btn_add.Text = "新建";
-            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // btn_delete
             // 
+            this.btn_delete.BackColor = System.Drawing.Color.White;
             this.btn_delete.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_delete.Location = new System.Drawing.Point(140, 406);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(103, 33);
             this.btn_delete.TabIndex = 3;
             this.btn_delete.Text = "刪除";
-            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.UseVisualStyleBackColor = false;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_delete_sub
             // 
+            this.btn_delete_sub.BackColor = System.Drawing.Color.White;
             this.btn_delete_sub.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_delete_sub.Location = new System.Drawing.Point(599, 409);
             this.btn_delete_sub.Name = "btn_delete_sub";
             this.btn_delete_sub.Size = new System.Drawing.Size(103, 33);
             this.btn_delete_sub.TabIndex = 5;
             this.btn_delete_sub.Text = "刪除";
-            this.btn_delete_sub.UseVisualStyleBackColor = true;
+            this.btn_delete_sub.UseVisualStyleBackColor = false;
             this.btn_delete_sub.Click += new System.EventHandler(this.btn_delete_sub_Click);
             // 
             // btn_add_sub
             // 
+            this.btn_add_sub.BackColor = System.Drawing.Color.White;
             this.btn_add_sub.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add_sub.Location = new System.Drawing.Point(405, 409);
             this.btn_add_sub.Name = "btn_add_sub";
             this.btn_add_sub.Size = new System.Drawing.Size(103, 33);
             this.btn_add_sub.TabIndex = 4;
             this.btn_add_sub.Text = "新建";
-            this.btn_add_sub.UseVisualStyleBackColor = true;
+            this.btn_add_sub.UseVisualStyleBackColor = false;
             this.btn_add_sub.Click += new System.EventHandler(this.btn_add_sub_Click);
             // 
             // mainQuest
