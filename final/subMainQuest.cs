@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 namespace final
 {
@@ -22,6 +24,10 @@ namespace final
         public void setindex (int _index)
         {
             index = _index;
+        }
+        public int getindex ()
+        {
+            return index;
         }
         public subMainQuest (int level,mQuestInfo mqi)
         {
@@ -104,9 +110,13 @@ namespace final
         #endregion
         private void subMainQuest_Load (object sender, EventArgs e)
         {
-            
+            this.Click += new EventHandler(select_sub);
+            foreach (Control c in Controls)
+            {
+                c.Click += new EventHandler(select_sub);
+            }
         }
-        private void select_sub ()
+        private void select_sub (object sender, EventArgs e)
         {
             _mqi.recolor_sub_quest();
             _mqi.focus_index = index;
@@ -115,7 +125,7 @@ namespace final
 
         private void subMainQuest_Click (object sender, EventArgs e)
         {
-            select_sub();
+            select_sub(sender,e);
         }
 
         private void btn_edit_Click (object sender, EventArgs e)
@@ -125,14 +135,15 @@ namespace final
 
         private void btn_train_Click (object sender, EventArgs e)
         {
-            practiceForm pForm = new practiceForm();
+            select_sub(sender, e);
+            practiceForm pForm = new practiceForm(this);
             pForm.level = _level;
             pForm.Show();
         }
 
         private void pictureBox1_Click (object sender, EventArgs e)
         {
-            select_sub();
+            select_sub(sender,e);
             OpenFileDialog upload_pic = new OpenFileDialog();
             upload_pic.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png,*.gif) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (upload_pic.ShowDialog() == DialogResult.OK)
@@ -157,7 +168,16 @@ namespace final
         {
             TextBox text = sender as TextBox;
             if (e.KeyCode == Keys.Enter &&  text.Text != "" )
-            {     
+            {
+                SqlConnection quest_db_connect;
+                quest_db_connect = new SqlConnection();
+                quest_db_connect.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
+                     "Integrated Security=True";
+                quest_db_connect.Open();
+                SqlCommand sql = new SqlCommand($"UPDATE  sub_quest SET name=N'{text.Text}' WHERE db_index = {index}", quest_db_connect);
+                sql.ExecuteNonQuery();
+                quest_db_connect.Close();
                 label_quest_name.Text = text.Text;
                 text.Dispose();
                 label_quest_name.BringToFront();
@@ -168,5 +188,6 @@ namespace final
         {
 
         }
+
     }
 }
