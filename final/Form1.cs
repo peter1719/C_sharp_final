@@ -17,6 +17,7 @@ namespace final
         public static mainChar mchar = new mainChar();
         private mainQuest mquest = new mainQuest();
         private Calendar calendar = new Calendar();
+        private shop mShop= new shop ();
         public static Form1 Instance
         {
             get
@@ -83,12 +84,13 @@ namespace final
 
         private void btn_other_Click (object sender, EventArgs e)
         {
-            if (!panelcontainer.Controls.ContainsKey("mainQuest"))
+            if (!panelcontainer.Controls.ContainsKey("shop"))
             {
                 panelcontainer.Controls.Clear();
-                mquest.Dock = DockStyle.Fill;
-                panelcontainer.Controls.Add(mquest);
-                panelcontainer.Controls["mainQuest"].BringToFront();
+                mShop.Dock = DockStyle.Fill;
+                panelcontainer.Controls.Add(mShop);
+                panelcontainer.Controls["shop"].BringToFront();
+                mShop.reward = mchar.get_reward();
             }
         }
 

@@ -76,6 +76,16 @@ namespace final
                                             energy.ToString(), energy.ToString(), ESP.ToString(), reward.ToString() };
             return temp;
         }
+        public int get_reward ()
+        {
+            return reward;
+        }
+        public void set_reard (int reward)
+        {
+            this.reward = reward;
+            label_reward.Text = "獎勵點數: " + reward.ToString();
+            write_pros_file();
+        }
         public mainChar ()
         {
             InitializeComponent();

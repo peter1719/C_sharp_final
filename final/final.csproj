@@ -80,6 +80,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="item.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="item.Designer.cs">
+      <DependentUpon>item.cs</DependentUpon>
+    </Compile>
     <Compile Include="mainChar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +117,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="shop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="shop.Designer.cs">
+      <DependentUpon>shop.cs</DependentUpon>
+    </Compile>
     <Compile Include="subMainQuest.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -131,6 +143,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="item.resx">
+      <DependentUpon>item.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainChar.resx">
       <DependentUpon>mainChar.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +162,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="shop.resx">
+      <DependentUpon>shop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="subMainQuest.resx">
       <DependentUpon>subMainQuest.cs</DependentUpon>
@@ -198,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\next.png" />
+    <None Include="Resources\roadroller1.PNG" />
     <Content Include="Resources\status.txt" />
     <Content Include="theQuest.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

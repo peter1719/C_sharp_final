@@ -69,7 +69,7 @@
             this.btn_other.Name = "btn_other";
             this.btn_other.Size = new System.Drawing.Size(150, 32);
             this.btn_other.TabIndex = 5;
-            this.btn_other.Text = "其他";
+            this.btn_other.Text = "商店";
             this.btn_other.UseVisualStyleBackColor = false;
             this.btn_other.Click += new System.EventHandler(this.btn_other_Click);
             // 
@@ -81,7 +81,7 @@
             this.btn_branch.Name = "btn_branch";
             this.btn_branch.Size = new System.Drawing.Size(150, 32);
             this.btn_branch.TabIndex = 4;
-            this.btn_branch.Text = "支線任務";
+            this.btn_branch.Text = "布告欄";
             this.btn_branch.UseVisualStyleBackColor = false;
             this.btn_branch.Click += new System.EventHandler(this.btn_branch_Click);
             // 

@@ -175,6 +175,15 @@ namespace final
             if (upload_pic.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Image = new Bitmap(upload_pic.FileName);
+                SqlConnection quest_db_connect;
+                quest_db_connect = new SqlConnection();
+                quest_db_connect.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
+                     "Integrated Security=True";
+                quest_db_connect.Open();
+                SqlCommand sql = new SqlCommand($"UPDATE sub_quest  SET path=N'{upload_pic.FileName}' WHERE id={index} ", quest_db_connect);
+                sql.ExecuteNonQuery();
+                quest_db_connect.Close();
             }
         }
 
