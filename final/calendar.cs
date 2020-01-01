@@ -36,15 +36,15 @@ namespace final
         private SqlConnection cn;
         private DataTable dt = new DataTable();
 
-        void can_move(Control x)
+        void enable_move(Control p)
         {
-            foreach(Control y in x.Controls)
+            foreach(Control c in p.Controls)
             {
-                y.MouseMove += Form1_MouseMove;
-                y.MouseDown += Form1_MouseDown;
-                y.MouseUp += Form1_MouseUp;
-                if (y.HasChildren)
-                    can_move(y);
+                c.MouseMove += Form1_MouseMove;
+                c.MouseDown += Form1_MouseDown;
+                c.MouseUp += Form1_MouseUp;
+                if (c.HasChildren)
+                    enable_move(c);
             }
         }
 
@@ -52,25 +52,23 @@ namespace final
         public Calendar()
         {
             InitializeComponent();
-
-            //back = new back();
+            //Color.FromArgb(10, 200, 0, 200);
             back.Size = Size;
             back.Location = Location;
-            tableLayoutPanel1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(tableLayoutPanel1, true, null);
-            tableLayoutPanel3.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(tableLayoutPanel1, true, null);
-            //tableLayoutPanel1.BackColor = Color.FromArgb(10, 200, 0, 200);
             TransparencyKey = BackColor;
-            //tableLayoutPanel3.BackColor = Color.FromArgb(1, 200, 0, 200);
-            tableLayoutPanel2.Left += 10;
+            calendarGrid.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(calendarGrid, true, null);
+            weekGrid.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(calendarGrid, true, null);
 
-            panel1.Width = Width;
-            panel1.Height = tableLayoutPanel3.Top - 2;
+            toolbar.Left += 10;
+
+            titlebar.Width = Width;
+            titlebar.Height = weekGrid.Top - 2;
 
             timer1.Start();
             ControlBox = false;//隱藏標題列
             Text = string.Empty;
-            label8.Text = DateTime.Now.Month.ToString();
-            label11.Text = DateTime.Now.Year.ToString();
+            title_month.Text = DateTime.Now.Month.ToString();
+            title_year.Text = DateTime.Now.Year.ToString();
 
             cn = new SqlConnection();
             cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
@@ -85,76 +83,57 @@ namespace final
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    Panel x = new Panel();
-                    TextBox z = new TextBox();
-                    x.Dock = DockStyle.Fill;
-                    z.Dock = DockStyle.Fill;
-                    //x.Height = 1000;
-                    //z.Height = 1000;
-                    z.Multiline = true;
-                    
-                    x.Tag = z;
-                    x.Controls.Add(z);
-                    z.Width = x.Width;
-                    z.Height = x.Height;
-                    z.Hide();
-                    x.Click += Form1_Click;
-                    x.Click += edit;
-                    Label y = new Label();
+                    Panel panel = new Panel();
+                    TextBox box = new TextBox();
+                    Label date_label = new Label();
+                    Label text = new Label();
+                    panel.Dock = DockStyle.Fill;
+                    panel.Tag = box;
+                    panel.Controls.Add(box);
+                    panel.Controls.Add(date_label);
+                    panel.Controls.Add(text);
+                    panel.Click += FinishEdit;
+                    panel.Click += edit;
+
+                    box.Hide();
+                    box.Dock = DockStyle.Fill;
+                    box.Multiline = true;                  
+                    box.Width = panel.Width;
+                    box.Height = panel.Height;
+                    Control[] k = { date_label, text };
+                    box.Tag = k;
+
+                    date_label.Top = 0;
+                    date_label.Width = panel.Width;
+                    date_label.Anchor = (AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top);
                     var d = (int)DateTime.Today.DayOfWeek;
-                    y.Text = DateTime.Today.AddDays(7*i+j-d).Day.ToString();
-                    if (7 * i + j - d == 0)
-                        y.ForeColor = Color.Red;
+                    date_label.Text = DateTime.Today.AddDays(7*i+j-d).Day.ToString();
+                    if (7 * i + j - d == 0)//今天
+                        date_label.ForeColor = Color.Red;
                     else
-                        y.ForeColor = Color.Black;
+                        date_label.ForeColor = ForeColor;
+                    date_label.Click += FinishEdit;
+                    date_label.Click += EditOnText;
+               
+                    text.Text = (dt.Select($@"date='{DateTime.Today.AddDays(7 * i + j - d).ToShortDateString()}'").ElementAtOrDefault(0) ?? dt.Select(@"date='1900/1/1'")[0])["data"].ToString();
+                    text.Tag = DateTime.Today.AddDays(7 * i + j - d);
+                    text.ForeColor = Color.White;
+                    text.Height = panel.Height - date_label.Height + 100;
+                    text.Width = panel.Width;
+                    text.Anchor = (AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top);
+                    text.Click += FinishEdit;
+                    text.Click += EditOnText;
+                    text.Top = date_label.Bottom;
+                    text.BringToFront();
 
-                    x.Controls.Add(y);
-                    y.Click += Form1_Click;
-                    y.Click += edit_l;
-                    y.Top = 0;
-
-                    Label a = new Label();
-                    a.ForeColor = Color.White;
-                    y.Width = x.Width;
-                    a.Width = x.Width;
-                    y.Anchor = (AnchorStyles.Right | AnchorStyles.Left| AnchorStyles.Top);
-                    a.Anchor = (AnchorStyles.Right|AnchorStyles.Left| AnchorStyles.Top);
-                    a.Click += Form1_Click;
-                    a.Click += edit_l;
-                    a.Height = x.Height - y.Height + 100;
-                    //a.Text = "test456";
-                    
-                    a.Text = (dt.Select($@"date='{DateTime.Today.AddDays(7 * i + j - d).ToShortDateString()}'").ElementAtOrDefault(0) ?? dt.Select(@"date='1900/1/1'")[0])["data"].ToString();
-                    a.Tag = DateTime.Today.AddDays(7 * i + j - d);
-                    Control[] k = { y, a};
-                    z.Tag = k;
-                    x.Controls.Add(a);
-                    a.BringToFront();
-                    a.Top = y.Bottom;
-                    tableLayoutPanel1.Controls.Add(x, j, i);
+                    calendarGrid.Controls.Add(panel, j, i);
                 }
             }
-            /*foreach (Control x in Controls)
-            {
-                x.Click += Form1_Click;
-                x.MouseMove += Form1_MouseMove;
-                x.MouseDown += Form1_MouseDown;
-                x.MouseUp += Form1_MouseUp;
-            }
-            foreach (Control x in tableLayoutPanel1.Controls)
-            {
-                foreach (Control y in x.Controls)
-                {
-                    y.MouseMove += Form1_MouseMove;
-                    y.MouseDown += Form1_MouseDown;
-                    y.MouseUp += Form1_MouseUp;
-                }
-            }*/
             /*int pWnd = FindWindow("SysListView32", null);
             int tWnd = Handle.ToInt32();
             SetParent(tWnd, pWnd);*/
-            can_move(this);
-            panel1.Click += Form1_Click;
+            enable_move(this);
+            titlebar.Click += FinishEdit;
             cn.Close();
 
         }
@@ -283,13 +262,13 @@ namespace final
             back.Location = Location;
 
             int count = 0;
-            tableLayoutPanel1.Left = 0;
-            tableLayoutPanel3.Left = 0;
+            calendarGrid.Left = 0;
+            weekGrid.Left = 0;
             //tableLayoutPanel3.Top = 40;
-            panel1.Width = Width;
-            tableLayoutPanel3.Width = Width;
-            tableLayoutPanel1.Width = Width;
-            tableLayoutPanel1.Height = Height - tableLayoutPanel3.Bottom-2;
+            titlebar.Width = Width;
+            weekGrid.Width = Width;
+            calendarGrid.Width = Width;
+            calendarGrid.Height = Height - weekGrid.Bottom-2;
             foreach (Panel x in Controls.OfType<Panel>())
             {
                 if ((string)x.Tag != "week")
@@ -337,7 +316,7 @@ namespace final
             ((Control)((Control)sender).Tag).Text = ((Control[])((Control)((Control)sender).Tag).Tag)[1].Text;
             ((Control)((Control)sender).Tag).Focus();
         }
-        private void edit_l(object sender, EventArgs e)
+        private void EditOnText(object sender, EventArgs e)
         {
             ((Control)((Control)sender).Parent.Tag).BringToFront();
             ((Control)((Control)sender).Parent.Tag).Show();
@@ -345,9 +324,9 @@ namespace final
             ((Control)((Control)sender).Parent.Tag).Text = ((Control[])((Control)((Control)sender).Parent.Tag).Tag)[1].Text;
             ((Control)((Control)sender).Parent.Tag).Focus();
         }
-        private void Form1_Click(object sender, EventArgs e)
+        private void FinishEdit(object sender, EventArgs e)
         {
-            foreach (Panel x in tableLayoutPanel1.Controls.OfType<Panel>())
+            foreach (Panel x in calendarGrid.Controls.OfType<Panel>())
             {
                 if (((TextBox)x.Tag).Visible) {
                     ((TextBox)x.Tag).Hide();
@@ -391,14 +370,14 @@ namespace final
         private void button4_Click(object sender, EventArgs e)
         {
             month--;
-            label8.Text = DateTime.Now.AddMonths(month).Month.ToString();
+            title_month.Text = DateTime.Now.AddMonths(month).Month.ToString();
             year--;
-            label11.Text = DateTime.Now.AddYears(year).Year.ToString();
+            title_year.Text = DateTime.Now.AddYears(year).Year.ToString();
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    Panel y = (Panel)tableLayoutPanel1.GetControlFromPosition(j, i);
+                    Panel y = (Panel)calendarGrid.GetControlFromPosition(j, i);
                     var d = (int)DateTime.Today.DayOfWeek;
                     ((Control[])((Control)y.Tag).Tag)[0].Text = DateTime.Today.AddDays(7 * i + j - d+28*month).Day.ToString();
                     if (7 * i + j - d + 28 * month == 0)
@@ -414,14 +393,14 @@ namespace final
         private void button3_Click(object sender, EventArgs e)
         {
             month++;
-            label8.Text = DateTime.Now.AddMonths(month).Month.ToString();
+            title_month.Text = DateTime.Now.AddMonths(month).Month.ToString();
             year++;
-            label11.Text = DateTime.Now.AddYears(year).Year.ToString();
+            title_year.Text = DateTime.Now.AddYears(year).Year.ToString();
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    Panel y = (Panel)tableLayoutPanel1.GetControlFromPosition(j, i);
+                    Panel y = (Panel)calendarGrid.GetControlFromPosition(j, i);
                     var d = (int)DateTime.Today.DayOfWeek;
                     ((Control[])((Control)y.Tag).Tag)[0].Text = DateTime.Today.AddDays(7 * i + j - d + 28 * month).Day.ToString();
                     if (7 * i + j - d + 28 * month == 0)

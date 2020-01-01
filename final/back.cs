@@ -26,9 +26,17 @@ namespace final
 
         private void back_Load(object sender, EventArgs e)
         {
+            BackColor = Color.FromArgb(46, 114, 138);
+            calendarGrid.Top = 96;
+            weekGrid.Top = 63;
             int pWnd = FindWindow("SysListView32", null);
             int tWnd = Handle.ToInt32();
             SetParent(tWnd, pWnd);
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            SendToBack();
         }
     }
 }
