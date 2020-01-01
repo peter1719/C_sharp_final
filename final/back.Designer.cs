@@ -170,14 +170,15 @@
             this.ClientSize = new System.Drawing.Size(1267, 770);
             this.Controls.Add(this.weekGrid);
             this.Controls.Add(this.calendarGrid);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "back";
             this.Opacity = 0.4D;
             this.ShowInTaskbar = false;
             this.Text = "back";
             this.TransparencyKey = System.Drawing.SystemColors.ControlDark;
             this.Load += new System.EventHandler(this.back_Load);
-            this.Click += new System.EventHandler(this.back_Click);
+            this.SizeChanged += new System.EventHandler(this.back_SizeChanged);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.back_MouseDown);
             this.weekGrid.ResumeLayout(false);
             this.weekGrid.PerformLayout();
             this.ResumeLayout(false);

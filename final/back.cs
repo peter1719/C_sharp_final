@@ -18,25 +18,37 @@ namespace final
 
         [DllImport("user32.dll")]
         static extern int SetParent(int hWndChild, int hWndNewParent);
-        public back()
+
+        Calendar c;
+        public back(Calendar r)
         {
             InitializeComponent();
-
+            c = r;
+            c.enable_move(this);
         }
 
         private void back_Load(object sender, EventArgs e)
         {
+            /*int pWnd = FindWindow("Progman", null);
+            int tWnd = Handle.ToInt32();
+            SetParent(tWnd, pWnd);*/
+            ControlBox = false;//隱藏標題列
+            Text = string.Empty;
             BackColor = Color.FromArgb(46, 114, 138);
             calendarGrid.Top = 96;
             weekGrid.Top = 63;
-            int pWnd = FindWindow("SysListView32", null);
-            int tWnd = Handle.ToInt32();
-            SetParent(tWnd, pWnd);
+            Size = c.Size;
         }
 
-        private void back_Click(object sender, EventArgs e)
+        private void back_MouseDown(object sender, MouseEventArgs e)
         {
-            SendToBack();
+            c.Focus();
+        }
+
+        private void back_SizeChanged(object sender, EventArgs e)
+        {
+            calendarGrid.Top = 96;
+            weekGrid.Top = 63;
         }
     }
 }

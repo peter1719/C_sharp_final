@@ -21,7 +21,7 @@ namespace final
 
         [DllImport("user32.dll")]
         static extern int SetParent(int hWndChild, int hWndNewParent);
-        private back back = new back();
+        private back back;
         private int tick = 0;
         private int month = 0;
         private int year = 0;
@@ -36,9 +36,12 @@ namespace final
         private SqlConnection cn;
         private DataTable dt = new DataTable();
 
-        void enable_move(Control p)
+        public void enable_move(Control p)
         {
-            foreach(Control c in p.Controls)
+            p.MouseMove += Form1_MouseMove;
+            p.MouseDown += Form1_MouseDown;
+            p.MouseUp += Form1_MouseUp;
+            foreach (Control c in p.Controls)
             {
                 c.MouseMove += Form1_MouseMove;
                 c.MouseDown += Form1_MouseDown;
@@ -52,10 +55,13 @@ namespace final
         public Calendar()
         {
             InitializeComponent();
+
+            TransparencyKey = BackColor;
+
+            back = new back(this);
             //Color.FromArgb(10, 200, 0, 200);
             back.Size = Size;
             back.Location = Location;
-            TransparencyKey = BackColor;
             calendarGrid.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(calendarGrid, true, null);
             weekGrid.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(calendarGrid, true, null);
 
@@ -129,14 +135,12 @@ namespace final
                     calendarGrid.Controls.Add(panel, j, i);
                 }
             }
-            /*int pWnd = FindWindow("SysListView32", null);
-            int tWnd = Handle.ToInt32();
-            SetParent(tWnd, pWnd);*/
+
             enable_move(this);
             titlebar.Click += FinishEdit;
             cn.Close();
-
         }
+
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             if (move)
@@ -152,13 +156,15 @@ namespace final
         }
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            back.Location = Location;
+            label9.Text = PointToClient(Cursor.Position).ToString();
+
             if (mouseDown && !resize)
             {
                 this.Location = new Point(
                     (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
                 this.Update();
             }
+            back.Location = Location;
             if (move && !resizing)
             {
                 if (PointToClient(Cursor.Position).X < 10 && PointToClient(Cursor.Position).Y < 10)
@@ -359,12 +365,8 @@ namespace final
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            back.Close();
             Close();
-        }
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -383,7 +385,7 @@ namespace final
                     if (7 * i + j - d + 28 * month == 0)
                         ((Control[])((Control)y.Tag).Tag)[0].ForeColor = Color.Red;
                     else
-                        ((Control[])((Control)y.Tag).Tag)[0].ForeColor = Color.Black;
+                        ((Control[])((Control)y.Tag).Tag)[0].ForeColor = ForeColor;
                     ((Control[])((Control)y.Tag).Tag)[1].Text = (dt.Select($@"date='{DateTime.Today.AddDays(7 * i + j - d + 28 * month).ToShortDateString()}'").ElementAtOrDefault(0) ?? dt.Select(@"date='1900/1/1'")[0])["data"].ToString();
                     ((Control[])((Control)y.Tag).Tag)[1].Tag = DateTime.Today.AddDays(7 * i + j - d + 28 * month);
                 }
@@ -406,7 +408,7 @@ namespace final
                     if (7 * i + j - d + 28 * month == 0)
                         ((Control[])((Control)y.Tag).Tag)[0].ForeColor = Color.Red;
                     else
-                        ((Control[])((Control)y.Tag).Tag)[0].ForeColor = Color.Black;
+                        ((Control[])((Control)y.Tag).Tag)[0].ForeColor = ForeColor;
                     ((Control[])((Control)y.Tag).Tag)[1].Text = (dt.Select($@"date='{DateTime.Today.AddDays(7 * i + j - d + 28 * month).ToShortDateString()}'").ElementAtOrDefault(0) ?? dt.Select(@"date='1900/1/1'")[0])["data"].ToString();
                     ((Control[])((Control)y.Tag).Tag)[1].Tag = DateTime.Today.AddDays(7 * i + j - d + 28 * month);
                 }
@@ -420,6 +422,9 @@ namespace final
 
         private void Calendar_Load(object sender, EventArgs e)
         {
+            /*int pWnd = FindWindow("Progman", null);
+            int tWnd = Handle.ToInt32();
+            SetParent(tWnd, pWnd);*/
             back.Show();
             back.Location = Location;
         }
