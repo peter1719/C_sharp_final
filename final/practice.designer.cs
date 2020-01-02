@@ -49,6 +49,7 @@
             this.lb_hours = new System.Windows.Forms.Label();
             this.lb_grade = new System.Windows.Forms.Label();
             this.lb_name = new System.Windows.Forms.Label();
+            this.timer_watch = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_gif)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -60,10 +61,10 @@
             // 
             this.pgb_practice.BackColor = System.Drawing.Color.DimGray;
             this.pgb_practice.ForeColor = System.Drawing.Color.Aqua;
-            this.pgb_practice.Location = new System.Drawing.Point(27, 313);
+            this.pgb_practice.Location = new System.Drawing.Point(27, 314);
             this.pgb_practice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pgb_practice.Name = "pgb_practice";
-            this.pgb_practice.Size = new System.Drawing.Size(301, 32);
+            this.pgb_practice.Size = new System.Drawing.Size(301, 35);
             this.pgb_practice.TabIndex = 3;
             this.pgb_practice.Value = 40;
             // 
@@ -130,7 +131,7 @@
             this.cbb_practice.Location = new System.Drawing.Point(27, 51);
             this.cbb_practice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbb_practice.Name = "cbb_practice";
-            this.cbb_practice.Size = new System.Drawing.Size(125, 39);
+            this.cbb_practice.Size = new System.Drawing.Size(125, 32);
             this.cbb_practice.TabIndex = 5;
             this.cbb_practice.Text = "修煉項目";
             this.cbb_practice.Click += new System.EventHandler(this.cbb_practice_Click);
@@ -203,7 +204,7 @@
             this.panel2.Location = new System.Drawing.Point(16, 239);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(228, 185);
+            this.panel2.Size = new System.Drawing.Size(226, 185);
             this.panel2.TabIndex = 9;
             // 
             // lb_superpower
@@ -261,7 +262,7 @@
             this.panel1.Location = new System.Drawing.Point(16, 40);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(228, 185);
+            this.panel1.Size = new System.Drawing.Size(226, 185);
             this.panel1.TabIndex = 8;
             // 
             // lb_experience
@@ -308,9 +309,14 @@
             this.lb_name.Text = "名稱: 克西和夫";
             this.lb_name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // timer_watch
+            // 
+            this.timer_watch.Interval = 1000;
+            this.timer_watch.Tick += new System.EventHandler(this.timer_watch_Tick);
+            // 
             // practiceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(662, 478);
@@ -353,6 +359,7 @@
         private System.Windows.Forms.Label lb_experience;
         private System.Windows.Forms.Label lb_superpower;
         private System.Windows.Forms.Label lb_hint;
+        private System.Windows.Forms.Timer timer_watch;
     }
 }
 

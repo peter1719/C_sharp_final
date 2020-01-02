@@ -37,7 +37,7 @@ namespace final
         private bool practicing = false;
 
         // 計時器
-        private int timer_count = 0;  int minute = 0; int second = 0; int second_count = 0; int second_remainder = 0;int time_reward = 0;
+        private int minute = 0; int second = 0;
 
         // 亂數
         Random ranobj = new Random();
@@ -78,7 +78,11 @@ namespace final
             }
 
             // 時數
-            if (second == 0 && second_remainder == 0) INFO[2] = (int.Parse(INFO[2]) + 0).ToString();
+            if (second == 60)
+            {
+                INFO[2] = (int.Parse(INFO[2]) + 1).ToString();
+                second = 0;
+            }                
 
             // 經驗值
             INFO[3] = pgb_practice.Value.ToString();
@@ -109,6 +113,7 @@ namespace final
                 current_gif = index;
                 practicing = true;
                 timer_practice.Enabled = true;
+                timer_watch.Enabled = true;
                 pgb_practice.Value = int.Parse(INFO[3]);
                 pgb_practice.Maximum = int.Parse(INFO[4]);
                 pbx_gif.Image = Image.FromFile(@"../../Resources/"+ GIFs[index]);
@@ -143,16 +148,34 @@ namespace final
                 //engage time update
                 INFO[2] = ( int.Parse(INFO[2]) + minute ).ToString();
                 lb_hours.Text = "時數: " + INFO[2] + "分鐘";
-                timer_count = 0;//set the time to 0
+                second = 0;//set the time to 0
                 minute = 0;
                 //
                 practicing = false;
                 timer_practice.Enabled = false;
+                timer_watch.Enabled = false;
                 pbx_gif.Image = null;
-                pbx_gif.BackColor = SystemColors.Control;
+                pbx_gif.BackColor = Color.DimGray;
                 lb_hint.Visible = true;
                 btn_end.Text = "結束修煉";
             }
+        }
+
+
+        private void timer_watch_Tick(object sender, EventArgs e)
+        {
+            // Renew Watch
+            second += 1;
+            if (second == 60)
+            {
+                minute += 1;
+                INFO[8] = (int.Parse(INFO[8]) + 1).ToString();
+            }           
+            lb_time.Text = minute.ToString() + "分:" + second.ToString() + "秒";
+
+            // Take a rest
+            if (minute >= 45) take_rest();
+
         }
 
         private void timer_practice_Tick(object sender, EventArgs e)
@@ -160,22 +183,7 @@ namespace final
             // Renew ProgressBar
             timer_practice.Interval = INTERVALS[level];
             pgb_practice.Value += 1;
-
-            // Renew Timer
-            timer_count += 1;            
-            second_count = timer_count / (1000 / timer_practice.Interval);
-            second_remainder = timer_count % (1000 / timer_practice.Interval);
-            minute = second_count / 60;
-            second = second_count % 60;
-            lb_time.Text = minute.ToString() + "分:" + second.ToString() + "秒";
-            if (minute >= 45)
-                take_rest();
-            time_reward += 1;
-            if (time_reward > 60 * ( 1000 / timer_practice.Interval ))
-            {
-                INFO[8] = ( int.Parse(INFO[8]) + 1 ).ToString();
-                time_reward = 0;
-            }
+            
             // Renew INFO
             renew_info();
             show_info();
@@ -191,10 +199,11 @@ namespace final
             INFO[2] = ( int.Parse(INFO[2]) + minute ).ToString();
             lb_hours.Text = "時數: " + INFO[2] + "分鐘";
             //stop the counter
-            timer_count = 0;//set the time to 0
+            second = 0;//set the time to 0
             minute = 0;
             practicing = false;
             timer_practice.Enabled = false;
+            timer_watch.Enabled = false;
             pbx_gif.Image = null;
             pbx_gif.BackColor = SystemColors.Control;
             lb_hint.Visible = true;
@@ -243,5 +252,6 @@ namespace final
             sql.ExecuteNonQuery();
             quest_db_connect.Close();
         }
+
     }
 }
