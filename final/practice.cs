@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using System.IO;
+using System.Media;
 
 namespace final
 {
@@ -22,6 +23,7 @@ namespace final
         private string[] LEVELS = { "【簡單】", "【普通】", "【大師】" };
         private int[] INTERVALS = { 150, 300, 450 };
         private subMainQuest smq;
+
         // 角色資訊
         private string[] INFO = { "克西和一", "3", "20", "66", "80", "65", "67", "64", "99" };
 
@@ -29,6 +31,7 @@ namespace final
         private int current_gif = -1;
         private string[] GIFs = { "study.gif", "draw.gif", "piano.gif", "dance.gif", "fly.gif" };
         private string[] ITEMs = { "韋編三絕", "妙手丹青", "繞樑三日", "翩翩起舞", "一飛衝天" };
+        private string[] SOUNDs = { "study.mp3", "draw.mp3", "piano.mp3", "dance.mp3", "fly.mp3" };
 
         // 升級資訊 // 第一維:修煉動畫(index:0~4), 第二維:智力、體力、超能力、獎勵點數(index:0~3)
         int[,] UPDATES = { { 5, 2, 4, 1 }, { 4, 3, 3, 2 }, { 3, 3, 3, 3 }, { 2, 4, 2, 4 }, { 1, 1, 5, 5 } };
@@ -62,7 +65,7 @@ namespace final
             for (int i = 5; i < 9; i++)
             {
                 int value = Convert.ToInt32( (level + 1) * UPDATES[current_gif, (i - 5)] * 0.5 ); // 升級數值
-                value += int.Parse(INFO[i]) + ranobj.Next(0, int.Parse(INFO[1])); // 原本數值 + 隨機數值
+                value += int.Parse(INFO[i]) + ranobj.Next(0, int.Parse(INFO[1])); // 升級數值 + 原本數值 + 隨機數值
                 INFO[i] = value.ToString();
             }         
         }
@@ -120,6 +123,9 @@ namespace final
                 pbx_gif.BackColor = SystemColors.ControlText;
                 lb_hint.Visible = false;
                 btn_end.Text = "停止修煉";
+                cbb_practice.Enabled = false;
+                SoundPlayer player = new SoundPlayer(@"../../Resources/Music" + SOUNDs[index]);   // 使用完整檔名建立物件
+                player.PlayLooping();　　　　　　　　                 // 重複播放
             }
             else if (practicing == true)
             {
@@ -158,6 +164,9 @@ namespace final
                 pbx_gif.BackColor = Color.DimGray;
                 lb_hint.Visible = true;
                 btn_end.Text = "結束修煉";
+                cbb_practice.Enabled = true;
+                SoundPlayer player = new SoundPlayer(@"../../Resources/Music" + SOUNDs[cbb_practice.SelectedIndex]);
+                player.Stop();
             }
         }
 
@@ -252,6 +261,5 @@ namespace final
             sql.ExecuteNonQuery();
             quest_db_connect.Close();
         }
-
     }
 }

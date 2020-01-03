@@ -61,7 +61,7 @@
             // 
             this.pgb_practice.BackColor = System.Drawing.Color.DimGray;
             this.pgb_practice.ForeColor = System.Drawing.Color.Aqua;
-            this.pgb_practice.Location = new System.Drawing.Point(27, 314);
+            this.pgb_practice.Location = new System.Drawing.Point(27, 310);
             this.pgb_practice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pgb_practice.Name = "pgb_practice";
             this.pgb_practice.Size = new System.Drawing.Size(301, 35);
@@ -131,7 +131,7 @@
             this.cbb_practice.Location = new System.Drawing.Point(27, 51);
             this.cbb_practice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbb_practice.Name = "cbb_practice";
-            this.cbb_practice.Size = new System.Drawing.Size(125, 32);
+            this.cbb_practice.Size = new System.Drawing.Size(125, 39);
             this.cbb_practice.TabIndex = 5;
             this.cbb_practice.Text = "修煉項目";
             this.cbb_practice.Click += new System.EventHandler(this.cbb_practice_Click);
@@ -188,7 +188,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox2.Size = new System.Drawing.Size(259, 451);
+            this.groupBox2.Size = new System.Drawing.Size(295, 451);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "角色狀態";
@@ -204,16 +204,16 @@
             this.panel2.Location = new System.Drawing.Point(16, 239);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(226, 185);
+            this.panel2.Size = new System.Drawing.Size(265, 185);
             this.panel2.TabIndex = 9;
             // 
             // lb_superpower
             // 
             this.lb_superpower.BackColor = System.Drawing.Color.MediumOrchid;
-            this.lb_superpower.Location = new System.Drawing.Point(20, 95);
+            this.lb_superpower.Location = new System.Drawing.Point(25, 95);
             this.lb_superpower.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_superpower.Name = "lb_superpower";
-            this.lb_superpower.Size = new System.Drawing.Size(180, 30);
+            this.lb_superpower.Size = new System.Drawing.Size(210, 30);
             this.lb_superpower.TabIndex = 9;
             this.lb_superpower.Text = "超能力: 68";
             this.lb_superpower.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -221,10 +221,10 @@
             // lb_strength
             // 
             this.lb_strength.BackColor = System.Drawing.Color.Violet;
-            this.lb_strength.Location = new System.Drawing.Point(20, 55);
+            this.lb_strength.Location = new System.Drawing.Point(25, 55);
             this.lb_strength.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_strength.Name = "lb_strength";
-            this.lb_strength.Size = new System.Drawing.Size(180, 30);
+            this.lb_strength.Size = new System.Drawing.Size(210, 30);
             this.lb_strength.TabIndex = 8;
             this.lb_strength.Text = "體力: 63";
             this.lb_strength.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -232,10 +232,10 @@
             // lb_wit
             // 
             this.lb_wit.BackColor = System.Drawing.Color.DodgerBlue;
-            this.lb_wit.Location = new System.Drawing.Point(20, 15);
+            this.lb_wit.Location = new System.Drawing.Point(25, 15);
             this.lb_wit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_wit.Name = "lb_wit";
-            this.lb_wit.Size = new System.Drawing.Size(180, 30);
+            this.lb_wit.Size = new System.Drawing.Size(210, 30);
             this.lb_wit.TabIndex = 7;
             this.lb_wit.Text = "智力: 65";
             this.lb_wit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -243,10 +243,10 @@
             // lb_bonus
             // 
             this.lb_bonus.BackColor = System.Drawing.Color.DeepPink;
-            this.lb_bonus.Location = new System.Drawing.Point(20, 135);
+            this.lb_bonus.Location = new System.Drawing.Point(25, 135);
             this.lb_bonus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_bonus.Name = "lb_bonus";
-            this.lb_bonus.Size = new System.Drawing.Size(180, 30);
+            this.lb_bonus.Size = new System.Drawing.Size(210, 30);
             this.lb_bonus.TabIndex = 4;
             this.lb_bonus.Text = "獎勵點數: 100";
             this.lb_bonus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -262,16 +262,16 @@
             this.panel1.Location = new System.Drawing.Point(16, 40);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(226, 185);
+            this.panel1.Size = new System.Drawing.Size(265, 185);
             this.panel1.TabIndex = 8;
             // 
             // lb_experience
             // 
             this.lb_experience.BackColor = System.Drawing.Color.Lime;
-            this.lb_experience.Location = new System.Drawing.Point(20, 135);
+            this.lb_experience.Location = new System.Drawing.Point(25, 135);
             this.lb_experience.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_experience.Name = "lb_experience";
-            this.lb_experience.Size = new System.Drawing.Size(180, 30);
+            this.lb_experience.Size = new System.Drawing.Size(210, 30);
             this.lb_experience.TabIndex = 6;
             this.lb_experience.Text = "經驗值: 87/88";
             this.lb_experience.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -279,10 +279,10 @@
             // lb_hours
             // 
             this.lb_hours.BackColor = System.Drawing.Color.Yellow;
-            this.lb_hours.Location = new System.Drawing.Point(20, 95);
+            this.lb_hours.Location = new System.Drawing.Point(25, 95);
             this.lb_hours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_hours.Name = "lb_hours";
-            this.lb_hours.Size = new System.Drawing.Size(180, 30);
+            this.lb_hours.Size = new System.Drawing.Size(210, 30);
             this.lb_hours.TabIndex = 4;
             this.lb_hours.Text = "時數: 84分鐘";
             this.lb_hours.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -290,10 +290,10 @@
             // lb_grade
             // 
             this.lb_grade.BackColor = System.Drawing.Color.Orange;
-            this.lb_grade.Location = new System.Drawing.Point(20, 55);
+            this.lb_grade.Location = new System.Drawing.Point(25, 55);
             this.lb_grade.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_grade.Name = "lb_grade";
-            this.lb_grade.Size = new System.Drawing.Size(180, 30);
+            this.lb_grade.Size = new System.Drawing.Size(210, 30);
             this.lb_grade.TabIndex = 3;
             this.lb_grade.Text = "等級: 5";
             this.lb_grade.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -301,10 +301,10 @@
             // lb_name
             // 
             this.lb_name.BackColor = System.Drawing.Color.Red;
-            this.lb_name.Location = new System.Drawing.Point(20, 15);
+            this.lb_name.Location = new System.Drawing.Point(25, 15);
             this.lb_name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_name.Name = "lb_name";
-            this.lb_name.Size = new System.Drawing.Size(180, 30);
+            this.lb_name.Size = new System.Drawing.Size(210, 30);
             this.lb_name.TabIndex = 1;
             this.lb_name.Text = "名稱: 克西和夫";
             this.lb_name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -316,10 +316,10 @@
             // 
             // practiceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(662, 478);
+            this.ClientSize = new System.Drawing.Size(682, 478);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
