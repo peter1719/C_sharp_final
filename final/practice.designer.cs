@@ -59,7 +59,7 @@
             // 
             // pgb_practice
             // 
-            this.pgb_practice.BackColor = System.Drawing.Color.DimGray;
+            this.pgb_practice.BackColor = System.Drawing.Color.Gainsboro;
             this.pgb_practice.ForeColor = System.Drawing.Color.Aqua;
             this.pgb_practice.Location = new System.Drawing.Point(27, 310);
             this.pgb_practice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
