@@ -334,6 +334,7 @@ namespace final
         }
         public void FinishEdit(object sender, EventArgs e)
         {
+            cn.Open();
             foreach (Panel x in calendarGrid.Controls.OfType<Panel>())
             {
                 if (((TextBox)x.Tag).Visible) {
@@ -360,7 +361,9 @@ namespace final
                 }
             }
             SqlDataAdapter db = new SqlDataAdapter("SELECT *  FROM  calendar_data", cn);
+            dt.Clear();
             db.Fill(dt);
+            cn.Close();
         }
 
         private void notifyIcon1_Click(object sender, EventArgs e)
@@ -376,6 +379,10 @@ namespace final
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //cn.Open();
+            //SqlDataAdapter db = new SqlDataAdapter("SELECT *  FROM  calendar_data", cn);
+            //db.Fill(dt);
+            //cn.Close();
             month--;
             title_month.Text = DateTime.Now.AddMonths(month).Month.ToString();
             if(Convert.ToInt32(title_month.Text)==12)
@@ -400,6 +407,16 @@ namespace final
 
         private void button3_Click(object sender, EventArgs e)
         {
+           //SqlConnection cn2 = new SqlConnection();
+           // cn2.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+           //     "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
+           //      "Integrated Security=True";
+           // cn2.Open();
+
+           // SqlDataAdapter db = new SqlDataAdapter("SELECT *  FROM  calendar_data", cn2);
+           // db.Fill(dt);
+
+           // cn2.Close();
             month++;
             title_month.Text = DateTime.Now.AddMonths(month).Month.ToString();
             if(Convert.ToInt32(title_month.Text) == 1)
