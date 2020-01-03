@@ -124,7 +124,7 @@ namespace final
                 lb_hint.Visible = false;
                 btn_end.Text = "停止修煉";
                 cbb_practice.Enabled = false;
-                SoundPlayer player = new SoundPlayer(@"../../Resources/" + SOUNDs[index]);    // 使用完整檔名建立物件
+                SoundPlayer player = new SoundPlayer(@"../../Resources/" + SOUNDs[current_gif]);    // 使用完整檔名建立物件
                 player.PlayLooping();   // 重複播放              
             }
             else if (practicing == true)
@@ -151,11 +151,10 @@ namespace final
                 Form1.mchar.set_all_properties(int.Parse(INFO[5]), int.Parse(INFO[7]), int.Parse(INFO[2]), int.Parse(INFO[8]), int.Parse(INFO[1]), int.Parse(INFO[6]), int.Parse(INFO[3]), INFO[0]);
                 Form1.mchar.write_pros_file();
                 db_sub_quest_save();
-                //engage time update
-                INFO[2] = ( int.Parse(INFO[2]) + minute ).ToString();
-                lb_hours.Text = "時數: " + INFO[2] + "分鐘";
-                second = 0;//set the time to 0
+                //engage time update            
+                second = 0;
                 minute = 0;
+                lb_time.Text = minute.ToString() + "分:" + second.ToString() + "秒";
                 //
                 practicing = false;
                 timer_practice.Enabled = false;
@@ -165,11 +164,10 @@ namespace final
                 lb_hint.Visible = true;
                 btn_end.Text = "結束修煉";
                 cbb_practice.Enabled = true;
-                SoundPlayer player = new SoundPlayer(@"../../Resources/" + SOUNDs[cbb_practice.SelectedIndex]);
+                SoundPlayer player = new SoundPlayer(@"../../Resources/" + SOUNDs[current_gif]);
                 player.Stop();
             }
         }
-
 
         private void timer_watch_Tick(object sender, EventArgs e)
         {
@@ -196,6 +194,7 @@ namespace final
             renew_info();
             show_info();
         }
+
         private void take_rest ()
         {
             //save the status
@@ -207,8 +206,10 @@ namespace final
             INFO[2] = ( int.Parse(INFO[2]) + minute ).ToString();
             lb_hours.Text = "時數: " + INFO[2] + "分鐘";
             //stop the counter
-            second = 0;//set the time to 0
+            second = 0;
             minute = 0;
+            lb_time.Text = minute.ToString() + "分:" + second.ToString() + "秒";
+            //
             practicing = false;
             timer_practice.Enabled = false;
             timer_watch.Enabled = false;
@@ -217,6 +218,8 @@ namespace final
             lb_hint.Visible = true;
             btn_end.Text = "結束修煉";            
             MessageBox.Show("休息是為了走更長遠的路，每45分鐘就要休息一下喔!", "貼心提醒", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SoundPlayer player = new SoundPlayer(@"../../Resources/" + SOUNDs[current_gif]);
+            player.Stop();
         }
 
         private void Form1_Load (object sender, EventArgs e)
@@ -247,6 +250,8 @@ namespace final
             Form1.mchar.set_all_properties(int.Parse(INFO[5]), int.Parse(INFO[7]), int.Parse(INFO[2]), int.Parse(INFO[8]), int.Parse(INFO[1]), int.Parse(INFO[6]), int.Parse(INFO[3]), INFO[0]);
             Form1.mchar.write_pros_file();
             db_sub_quest_save();
+            SoundPlayer player = new SoundPlayer(@"../../Resources/" + SOUNDs[current_gif]);
+            player.Stop();
         }
         private void db_sub_quest_save ()
         {
