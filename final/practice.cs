@@ -31,7 +31,7 @@ namespace final
         private int current_gif = -1;
         private string[] GIFs = { "study.gif", "draw.gif", "piano.gif", "dance.gif", "fly.gif" };
         private string[] ITEMs = { "韋編三絕", "妙手丹青", "繞樑三日", "翩翩起舞", "一飛衝天" };
-        private string[] SOUNDs = { "study.mp3", "draw.mp3", "piano.mp3", "dance.mp3", "fly.mp3" };
+        private string[] SOUNDs = { "study.wav", "draw.wav", "piano.wav", "dance.wav", "fly.wav" };
 
         // 升級資訊 // 第一維:修煉動畫(index:0~4), 第二維:智力、體力、超能力、獎勵點數(index:0~3)
         int[,] UPDATES = { { 5, 2, 4, 1 }, { 4, 3, 3, 2 }, { 3, 3, 3, 3 }, { 2, 4, 2, 4 }, { 1, 1, 5, 5 } };
@@ -124,8 +124,8 @@ namespace final
                 lb_hint.Visible = false;
                 btn_end.Text = "停止修煉";
                 cbb_practice.Enabled = false;
-                SoundPlayer player = new SoundPlayer(@"../../Resources/Music" + SOUNDs[index]);   // 使用完整檔名建立物件
-                player.PlayLooping();　　　　　　　　                 // 重複播放
+                SoundPlayer player = new SoundPlayer(@"../../Resources/" + SOUNDs[index]);    // 使用完整檔名建立物件
+                player.PlayLooping();   // 重複播放              
             }
             else if (practicing == true)
             {
@@ -165,7 +165,7 @@ namespace final
                 lb_hint.Visible = true;
                 btn_end.Text = "結束修煉";
                 cbb_practice.Enabled = true;
-                SoundPlayer player = new SoundPlayer(@"../../Resources/Music" + SOUNDs[cbb_practice.SelectedIndex]);
+                SoundPlayer player = new SoundPlayer(@"../../Resources/" + SOUNDs[cbb_practice.SelectedIndex]);
                 player.Stop();
             }
         }
@@ -184,7 +184,6 @@ namespace final
 
             // Take a rest
             if (minute >= 45) take_rest();
-
         }
 
         private void timer_practice_Tick(object sender, EventArgs e)
