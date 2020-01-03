@@ -56,7 +56,7 @@ namespace final
         {
             InitializeComponent();
 
-            TransparencyKey = BackColor;
+            //TransparencyKey = BackColor;
 
             back = new back(this);
             //Color.FromArgb(10, 200, 0, 200);

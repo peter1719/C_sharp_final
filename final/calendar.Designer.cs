@@ -91,7 +91,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 6);
+            this.label1.Location = new System.Drawing.Point(58, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 22);
             this.label1.TabIndex = 2;
@@ -111,7 +111,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(937, 6);
+            this.label6.Location = new System.Drawing.Point(938, 6);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 22);
             this.label6.TabIndex = 2;
@@ -121,7 +121,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(233, 6);
+            this.label2.Location = new System.Drawing.Point(234, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 22);
             this.label2.TabIndex = 2;
@@ -131,7 +131,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(761, 6);
+            this.label5.Location = new System.Drawing.Point(762, 6);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 22);
             this.label5.TabIndex = 2;
@@ -141,7 +141,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(409, 6);
+            this.label3.Location = new System.Drawing.Point(410, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 22);
             this.label3.TabIndex = 2;
@@ -151,7 +151,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(585, 6);
+            this.label4.Location = new System.Drawing.Point(586, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 22);
             this.label4.TabIndex = 2;
@@ -159,6 +159,7 @@
             // 
             // calendarGrid
             // 
+            this.calendarGrid.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.calendarGrid.ColumnCount = 7;
             this.calendarGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.calendarGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -237,6 +238,7 @@
             // 
             // weekGrid
             // 
+            this.weekGrid.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.weekGrid.ColumnCount = 7;
             this.weekGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.weekGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -347,7 +349,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(1267, 770);
             this.Controls.Add(this.titlebar);
             this.Controls.Add(this.weekGrid);
