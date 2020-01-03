@@ -24,7 +24,7 @@ namespace final
             set
             {
                 _reward = value;
-                label_reward.Text = "獎勵: " + value.ToString();
+                label_reward.Text = "剩餘獎勵: " + value.ToString();
             }
         }
         public shop ()
@@ -161,5 +161,6 @@ namespace final
             }
             return null;
         }
+
     }
 }

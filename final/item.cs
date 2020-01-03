@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 
 namespace final
@@ -35,7 +36,19 @@ namespace final
         public int price = 0;
         public int bought_number = 0;
         public string name = "x";
-        public string file_path = "";
+        private string path = "";
+        public string file_path
+        {
+            set
+            {
+                path = value;
+                if (File.Exists(value)) //存在
+                {
+                    pictureBox1.Image = new Bitmap(value);
+                }
+            }
+
+        }
         private shop mshop;
         private void item_Load (object sender, EventArgs e)
         {
@@ -205,7 +218,6 @@ namespace final
             if (upload_pic.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Image = new Bitmap(upload_pic.FileName);
-                file_path = upload_pic.FileName;
                 // upload the path
                 SqlConnection quest_db_connect;
                 quest_db_connect = new SqlConnection();
@@ -213,7 +225,7 @@ namespace final
                     "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
                      "Integrated Security=True";
                 quest_db_connect.Open();
-                SqlCommand sql = new SqlCommand($"UPDATE  items SET file_address=N'{file_path}' WHERE id={index} ", quest_db_connect);
+                SqlCommand sql = new SqlCommand($"UPDATE  items SET file_address=N'{upload_pic.FileName}' WHERE id={index} ", quest_db_connect);
                 sql.ExecuteNonQuery();
                 quest_db_connect.Close();
             }

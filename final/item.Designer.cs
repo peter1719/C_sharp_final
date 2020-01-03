@@ -98,7 +98,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(129, 88);
+            this.label3.Location = new System.Drawing.Point(129, 77);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 20);
@@ -109,7 +109,7 @@
             // 
             this.label_num.AutoSize = true;
             this.label_num.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label_num.Location = new System.Drawing.Point(231, 88);
+            this.label_num.Location = new System.Drawing.Point(231, 77);
             this.label_num.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label_num.Name = "label_num";
             this.label_num.Size = new System.Drawing.Size(17, 20);

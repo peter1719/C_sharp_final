@@ -86,9 +86,9 @@
             this.label_reward.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label_reward.Location = new System.Drawing.Point(415, 409);
             this.label_reward.Name = "label_reward";
-            this.label_reward.Size = new System.Drawing.Size(57, 24);
+            this.label_reward.Size = new System.Drawing.Size(95, 24);
             this.label_reward.TabIndex = 6;
-            this.label_reward.Text = "獎勵: ";
+            this.label_reward.Text = "剩餘獎勵: ";
             // 
             // shop
             // 

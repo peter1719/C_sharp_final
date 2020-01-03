@@ -16,7 +16,7 @@ namespace final
         public static bool on_training = false;
         public static mainChar mchar = new mainChar();
         private mainQuest mquest = new mainQuest();
-        private Calendar calendar = new Calendar();
+        private Calendar calendar;
         private shop mShop= new shop ();
         public static Form1 Instance
         {
@@ -78,6 +78,8 @@ namespace final
 
         private void btn_branch_Click (object sender, EventArgs e)
         {
+            if (calendar == null)
+                calendar = new Calendar();
             calendar.Show();
             Focus();
         }
