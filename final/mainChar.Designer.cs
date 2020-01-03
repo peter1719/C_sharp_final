@@ -117,7 +117,7 @@
             // 
             this.label_name.AutoSize = true;
             this.label_name.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_name.Location = new System.Drawing.Point(66, 10);
+            this.label_name.Location = new System.Drawing.Point(76, 10);
             this.label_name.Name = "label_name";
             this.label_name.Size = new System.Drawing.Size(109, 30);
             this.label_name.TabIndex = 8;
@@ -163,7 +163,7 @@
             this.panel_ability.Controls.Add(this.label_reward);
             this.panel_ability.Controls.Add(this.label_energy);
             this.panel_ability.Controls.Add(this.label_ESP);
-            this.panel_ability.Location = new System.Drawing.Point(527, 47);
+            this.panel_ability.Location = new System.Drawing.Point(570, 47);
             this.panel_ability.Name = "panel_ability";
             this.panel_ability.Size = new System.Drawing.Size(191, 200);
             this.panel_ability.TabIndex = 12;
@@ -177,7 +177,7 @@
             this.panel_name.Controls.Add(this.label_time);
             this.panel_name.Location = new System.Drawing.Point(303, 47);
             this.panel_name.Name = "panel_name";
-            this.panel_name.Size = new System.Drawing.Size(191, 200);
+            this.panel_name.Size = new System.Drawing.Size(239, 200);
             this.panel_name.TabIndex = 13;
             // 
             // mainChar
