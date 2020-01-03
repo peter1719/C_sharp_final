@@ -156,7 +156,7 @@ namespace final
         }
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            label9.Text = PointToClient(Cursor.Position).ToString();
+            //label9.Text = PointToClient(Cursor.Position).ToString();
 
             if (mouseDown && !resize)
             {
@@ -332,7 +332,7 @@ namespace final
             ((Control)((Control)sender).Parent.Tag).Text = ((Control[])((Control)((Control)sender).Parent.Tag).Tag)[1].Text;
             ((Control)((Control)sender).Parent.Tag).Focus();
         }
-        private void FinishEdit(object sender, EventArgs e)
+        public void FinishEdit(object sender, EventArgs e)
         {
             foreach (Panel x in calendarGrid.Controls.OfType<Panel>())
             {

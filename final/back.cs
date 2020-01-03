@@ -27,6 +27,17 @@ namespace final
             c.enable_move(this);
         }
 
+        void move(Control p)
+        {
+            p.MouseDown += back_MouseDown;
+            foreach (Control c in p.Controls)
+            {
+                c.MouseDown += back_MouseDown;
+                if (c.HasChildren)
+                    move(c);
+            }
+        }
+
         private void back_Load(object sender, EventArgs e)
         {
             /*int pWnd = FindWindow("Progman", null);
@@ -38,6 +49,8 @@ namespace final
             calendarGrid.Top = 96;
             weekGrid.Top = 63;
             Size = c.Size;
+            move(this);
+            weekGrid.Click += c.FinishEdit;
         }
 
         private void back_MouseDown(object sender, MouseEventArgs e)
