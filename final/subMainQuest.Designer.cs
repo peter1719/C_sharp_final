@@ -46,7 +46,7 @@
             this.label1.Location = new System.Drawing.Point(122, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 40);
+            this.label1.Size = new System.Drawing.Size(122, 50);
             this.label1.TabIndex = 0;
             this.label1.Text = "任務: ";
             // 
@@ -57,7 +57,7 @@
             this.label_quest_name.Location = new System.Drawing.Point(213, 24);
             this.label_quest_name.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label_quest_name.Name = "label_quest_name";
-            this.label_quest_name.Size = new System.Drawing.Size(205, 30);
+            this.label_quest_name.Size = new System.Drawing.Size(257, 38);
             this.label_quest_name.TabIndex = 1;
             this.label_quest_name.Text = "克西和夫電壓定理";
             this.label_quest_name.DoubleClick += new System.EventHandler(this.label_quest_name_DoubleClick);
@@ -81,7 +81,7 @@
             this.label3.Location = new System.Drawing.Point(122, 68);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 40);
+            this.label3.Size = new System.Drawing.Size(112, 50);
             this.label3.TabIndex = 5;
             this.label3.Text = "進度:";
             // 
@@ -92,7 +92,7 @@
             this.label_engage_time.Location = new System.Drawing.Point(217, 70);
             this.label_engage_time.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label_engage_time.Name = "label_engage_time";
-            this.label_engage_time.Size = new System.Drawing.Size(201, 30);
+            this.label_engage_time.Size = new System.Drawing.Size(251, 38);
             this.label_engage_time.TabIndex = 6;
             this.label_engage_time.Text = "稍微知道(50分鐘)";
             this.label_engage_time.DoubleClick += new System.EventHandler(this.label_engage_time_DoubleClick);
@@ -129,7 +129,7 @@
             // 
             // subMainQuest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel_exe);
