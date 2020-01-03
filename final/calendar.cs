@@ -375,6 +375,7 @@ namespace final
         {
             month--;
             title_month.Text = DateTime.Now.AddMonths(month).Month.ToString();
+            if(Convert.ToInt32(title_month.Text)==12)
             year--;
             title_year.Text = DateTime.Now.AddYears(year).Year.ToString();
             for (int i = 0; i < 4; i++)
@@ -398,6 +399,7 @@ namespace final
         {
             month++;
             title_month.Text = DateTime.Now.AddMonths(month).Month.ToString();
+            if(Convert.ToInt32(title_month.Text) == 1)
             year++;
             title_year.Text = DateTime.Now.AddYears(year).Year.ToString();
             for (int i = 0; i < 4; i++)
