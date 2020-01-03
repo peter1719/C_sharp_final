@@ -197,6 +197,7 @@ namespace final
                 temp.quest_name = datarow[1].ToString();//name
                 temp.engage_time = (int)datarow[3];//time
                 temp.setindex((int)datarow[4]);//set index in the list
+                temp.file_path = datarow[5].ToString();
                 list_quests[(int)datarow[2]].Add(temp);
             }
             quest_db_connect.Close();

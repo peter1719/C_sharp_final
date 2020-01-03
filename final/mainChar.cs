@@ -62,7 +62,7 @@ namespace final
         public string char_pros ()
         {
             string temp = wisdom.ToString() + "," + ESP.ToString() + "," + time.ToString() + "," + reward.ToString()
-             + "," + level.ToString() + "," + energy.ToString() + "," + exe.ToString() + "," + name;
+             + "," + level.ToString() + "," + energy.ToString() + "," + exe.ToString() + "," + name + "," + path;
             return temp;
         }
 
@@ -86,6 +86,18 @@ namespace final
             label_reward.Text = "獎勵點數: " + reward.ToString();
             write_pros_file();
         }
+        private string path = "";
+        public string file_path
+        {
+            set
+            {
+                path = value;
+                if (File.Exists(value)) //存在
+                {
+                    pictureBox1.Image = new Bitmap(value);
+                }
+            }
+        }
         public mainChar ()
         {
             InitializeComponent();
@@ -107,7 +119,8 @@ namespace final
             upload_Avatar.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png,*.gif) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (upload_Avatar.ShowDialog() == DialogResult.OK)
             {
-                pictureBox1.Image = new Bitmap(upload_Avatar.FileName);
+                file_path =  upload_Avatar.FileName;
+                write_pros_file();
             }            
         }
 
@@ -143,6 +156,7 @@ namespace final
                 string [] datas = data.Split(',');
                 set_all_properties(int.Parse( datas[0]),int.Parse( datas[1]), int.Parse(datas[2]), int.Parse(datas[3]), 
                     int.Parse(datas[4]),int.Parse( datas[5]),int.Parse( datas[6]),datas[7]);
+                file_path = datas[8];
                 sr.Close();
             }
 

@@ -101,7 +101,7 @@
             this.btn_main.Name = "btn_main";
             this.btn_main.Size = new System.Drawing.Size(150, 32);
             this.btn_main.TabIndex = 1;
-            this.btn_main.Text = "主線任務";
+            this.btn_main.Text = "課題";
             this.btn_main.UseVisualStyleBackColor = false;
             this.btn_main.Click += new System.EventHandler(this.btn_main_Click);
             // 
@@ -126,7 +126,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "英雄養成手冊";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

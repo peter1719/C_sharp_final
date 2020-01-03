@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 
 namespace final
@@ -29,7 +30,7 @@ namespace final
         {
             return index;
         }
-        public subMainQuest (int level,mQuestInfo mqi)
+        public subMainQuest (int level, mQuestInfo mqi)
         {
             InitializeComponent();
             _level = level;
@@ -65,8 +66,8 @@ namespace final
                 int full = 0;
                 int width = 0;
                 int level_base = 2 + _level;
-                i = (int)Math.Log((_engage_time / base_time), level_base);
-              
+                i = (int)Math.Log(( _engage_time / base_time ), level_base);
+
                 if (i > master_level.Length - 1)
                     i = master_level.Length - 1;
                 else if (i < 0)
@@ -74,13 +75,13 @@ namespace final
                 if (engage_time > base_time)
                 {
                     full = (int)( Math.Pow(level_base, i + 1) - Math.Pow(level_base, i) ) * base_time;
-                    width = ( this.Width - panelindicator.Width) * ( engage_time - (int)Math.Pow(level_base, i) * base_time ) / full;
+                    width = ( this.Width - panelindicator.Width ) * ( engage_time - (int)Math.Pow(level_base, i) * base_time ) / full;
                     panel_exe.Width = width;
                 }
                 else
                 {
                     full = base_time;
-                    width = ( this.Width - panelindicator.Width ) * (engage_time ) / full;
+                    width = ( this.Width - panelindicator.Width ) * ( engage_time ) / full;
                     panel_exe.Width = width;
                 }
 
@@ -92,7 +93,7 @@ namespace final
                     label_engage_time.Text = level_title + "(" + _engage_time.ToString() + "分)";
                 else
                 {
-                    label_engage_time.Text = level_title + "(" + ( _engage_time/60).ToString() + "時" + (_engage_time%60).ToString() + "分)";
+                    label_engage_time.Text = level_title + "(" + ( _engage_time / 60 ).ToString() + "時" + ( _engage_time % 60 ).ToString() + "分)";
                 }
             }
         }
@@ -107,7 +108,7 @@ namespace final
                 panel_indicator = value;
             }
         }
-        
+
         #endregion
         private void subMainQuest_Load (object sender, EventArgs e)
         {
@@ -143,7 +144,7 @@ namespace final
 
         private void subMainQuest_Click (object sender, EventArgs e)
         {
-            select_sub(sender,e);
+            select_sub(sender, e);
         }
 
         private void btn_edit_Click (object sender, EventArgs e)
@@ -166,7 +167,20 @@ namespace final
                 MessageBox.Show("一次只能修練一個項目喔!", "貼心提醒", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        private string path = "";
+        public string file_path
+        {
+            set
+            {
+                path = value;
+                if (File.Exists(value)) //存在
+                {
+                    pictureBox1.Image = new Bitmap(value);
+                }
+            }
 
+        }
+    
         private void pictureBox1_Click (object sender, EventArgs e)
         {
             select_sub(sender,e);
@@ -181,7 +195,7 @@ namespace final
                     "AttachDbFilename=|DataDirectory|theQuest.mdf;" +
                      "Integrated Security=True";
                 quest_db_connect.Open();
-                SqlCommand sql = new SqlCommand($"UPDATE sub_quest  SET path=N'{upload_pic.FileName}' WHERE id={index} ", quest_db_connect);
+                SqlCommand sql = new SqlCommand($"UPDATE sub_quest  SET path=N'{upload_pic.FileName}' WHERE db_index = {index} ", quest_db_connect);
                 sql.ExecuteNonQuery();
                 quest_db_connect.Close();
             }
