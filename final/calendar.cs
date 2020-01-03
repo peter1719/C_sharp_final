@@ -349,6 +349,7 @@ namespace final
                         {
                             SqlDataAdapter sql = new SqlDataAdapter($"INSERT INTO calendar_data VALUES('{((DateTime)((Control[])((Control)x.Tag).Tag)[1].Tag).ToShortDateString()}',N'{((TextBox)x.Tag).Text}')", cn);
                             sql.Fill(dt);
+                            
                         }
                     }
                     else
@@ -358,6 +359,8 @@ namespace final
                     }
                 }
             }
+            SqlDataAdapter db = new SqlDataAdapter("SELECT *  FROM  calendar_data", cn);
+            db.Fill(dt);
         }
 
         private void notifyIcon1_Click(object sender, EventArgs e)
