@@ -250,8 +250,11 @@ namespace final
             Form1.mchar.set_all_properties(int.Parse(INFO[5]), int.Parse(INFO[7]), int.Parse(INFO[2]), int.Parse(INFO[8]), int.Parse(INFO[1]), int.Parse(INFO[6]), int.Parse(INFO[3]), INFO[0]);
             Form1.mchar.write_pros_file();
             db_sub_quest_save();
-            SoundPlayer player = new SoundPlayer(@"../../Resources/" + SOUNDs[current_gif]);
-            player.Stop();
+            if (current_gif != -1)
+            {
+                SoundPlayer player = new SoundPlayer(@"../../Resources/" + SOUNDs[current_gif]);
+                player.Stop();
+            }            
         }
         private void db_sub_quest_save ()
         {
